@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: "Apercu";
+    src: url("/fonts/ApercuPro-Regular.woff2") format("woff2"),
+        url("/fonts/ApercuPro-Regular.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
 @layer base {
     :root {
         --background: 0 0% 100%;
@@ -73,6 +82,10 @@
         @apply border-border;
     }
     body {
-        @apply bg-background text-foreground;
+        @apply bg-background text-neutral-900;
     }
+}
+
+p {
+    @apply font-apercu text-neutral-600;
 }

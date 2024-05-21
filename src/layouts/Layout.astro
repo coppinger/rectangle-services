@@ -5,6 +5,8 @@ interface Props {
 
 import "$lib/styles/app.css";
 
+import PostHog from "../components/posthog.astro";
+
 const { title } = Astro.props;
 
 import { Image } from "astro:assets";
@@ -23,6 +25,7 @@ import "@fontsource-variable/plus-jakarta-sans";
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
+        <PostHog />
     </head>
     <body class="bg-neutral-50">
         <div

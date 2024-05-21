@@ -60,6 +60,7 @@ const config = {
             },
             fontFamily: {
                 sans: ["Plus Jakarta Sans Variable", ...fontFamily.sans],
+                apercu: ["Apercu", ...fontFamily.sans],
             },
         },
     },
