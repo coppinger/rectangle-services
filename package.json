@@ -13,6 +13,7 @@
     "@astrojs/check": "^0.7.0",
     "@astrojs/svelte": "^5.4.0",
     "@astrojs/tailwind": "^5.1.0",
+    "@fontsource-variable/plus-jakarta-sans": "^5.0.21",
     "astro": "^4.8.6",
     "bits-ui": "^0.21.8",
     "clsx": "^2.1.1",
