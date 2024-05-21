@@ -1,6 +1,8 @@
 ---
 import { Button } from "$lib/components/ui/button";
 
+import Accordion from "$lib/components/Accordion.svelte";
+
 let { title } = Astro.props;
 
 import Layout from "$lib/layouts/Layout.astro";
@@ -34,9 +36,20 @@ let faqs = [
 
 <Layout title="Welcome to Astro.">
     <div class="flex flex-col gap-10 col-span-3">
-        <h1 class="text-5xl font-black">
-            Hi, my name is Charlie <span class="text-blue-300">&</span> I’m a Senior
-            Product Designer
+        <h1 class="text-5xl font-black inline-block">
+            Hi, my name is Charlie <span class="inline-block"
+                ><svg
+                    width="31"
+                    height="34"
+                    viewBox="0 0 31 34"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path
+                        d="M0.484333 23.7031C0.203083 18.5938 4.28121 15.4531 8.54683 13.8594C7.14058 12.5469 5.68746 10.7188 5.59371 8.70313C5.35933 3.6875 10.6562 0.921879 14.9218 0.687504C17.4062 0.546879 23.5937 0.968754 23.7343 4.10938C23.875 6.875 22.6093 10.8125 20.7812 10.9063C19.2343 11 19.4687 4.8125 13.1875 5.70313C10.8437 6.03125 8.73433 7.67188 8.87496 10.25C8.92183 11.375 9.48433 12.3125 10.2343 13.1094C10.9843 12.7344 12.0156 12.5469 13.0468 12.5469C14.9218 12.5469 16.7968 13.2031 16.8906 14.6563C16.9843 16.4375 15.9062 17.0938 14.5468 17.0938C12.8125 17.0938 10.6093 16.0156 9.81246 15.125C7.74996 16.4844 6.76558 18.4531 6.90621 20.9844C7.14058 26.0469 10.8437 29.7969 15.9531 29.8906C19.75 29.9375 25.5625 28.2969 25.5625 22.8594C25.5625 20.375 23.875 19.8594 22.6562 19.625C18.8125 20.7969 14.5937 22.7188 17.4531 26.1875L16.7031 27.0313C9.39058 18.875 18.6718 15.7813 24.25 13.4375C27.3437 12.1719 26.4531 8.75 24.0156 8.79688L24.1562 7.57813C30.8125 6.875 32.8281 15.8281 27.625 18.3125C28.3281 19.3906 28.8437 21.0781 28.7031 23.0469C28.1875 30.3594 20.0781 33.2188 14.6406 33.5C8.64058 33.8281 0.999958 31.5313 0.484333 23.7031Z"
+                        fill="#171717"></path>
+                </svg>
+            </span> I’m a Senior Product Designer
         </h1>
         <p>
             I work with independent developers, startup founders and established
@@ -44,7 +57,7 @@ let faqs = [
             multiplier
         </p>
         <div
-            class="border border-dashed border-neutral-200 bg-white grid grid-cols-3 py-1"
+            class="border border-dashed border-neutral-300 bg-white grid grid-cols-3 py-1"
         >
             <div
                 class="flex items-center justify-center gap-3 px-4 cols-span-1"
@@ -57,7 +70,7 @@ let faqs = [
                     >
                     </div>
                 </div>
-                <p>May</p>
+                <p class="line-through">May</p>
             </div>
             <div
                 class="flex items-center justify-center gap-3 px-4 cols-span-1"
@@ -66,7 +79,7 @@ let faqs = [
                     class="rounded-[1px] border border-neutral-300 w-[20px] h-[12px]"
                 >
                     <div
-                        class="border border-neutral-50 bg-red-400 w-full h-full rounded-[2px]"
+                        class="border border-neutral-50 bg-green-500 w-full h-full rounded-[2px]"
                     >
                     </div>
                 </div>
@@ -79,12 +92,371 @@ let faqs = [
                     class="rounded-[1px] border border-neutral-300 w-[20px] h-[12px]"
                 >
                     <div
-                        class="border border-neutral-50 bg-red-400 w-full h-full rounded-[2px]"
+                        class="border border-neutral-50 bg-green-500 w-full h-full rounded-[2px]"
                     >
                     </div>
                 </div>
                 <p>July</p>
             </div>
         </div>
+    </div>
+    <div
+        class="grid grid-cols-2 bg-neutral-50 border border-neutral-300 border-dashed col-span-3 gap-5 p-5"
+    >
+        <p>logos</p>
+    </div>
+    <div
+        class="grid grid-cols-2 bg-neutral-50 border border-neutral-300 border-dashed col-span-3 gap-5 p-5"
+    >
+        <p>testimonial</p>
+    </div>
+    <div class="flex flex-col gap-20 col-span-3">
+        <h2 class="text-4xl font-bold text-neutral-900">Services</h2>
+        <ul class="flex flex-col gap-10">
+            <li class="flex flex-col gap-4">
+                <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <mask
+                        id="mask0_45_20346"
+                        style="mask-type:alpha"
+                        maskUnits="userSpaceOnUse"
+                        x="0"
+                        y="0"
+                        width="24"
+                        height="24"
+                    >
+                        <rect width="24" height="24" fill="#D9D9D9"></rect>
+                    </mask>
+                    <g mask="url(#mask0_45_20346)">
+                        <path
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M20.45 18.2267H3.54998C2.89998 18.2267 2.37498 17.9684 1.97498 17.4517C1.57498 16.9351 1.45832 16.3601 1.62498 15.7267L2.99998 10.2267V8.22675C2.99998 7.67675 3.19582 7.20591 3.58748 6.81425C3.97915 6.42258 4.44998 6.22675 4.99998 6.22675H19C19.55 6.22675 20.0208 6.42258 20.4125 6.81425C20.8041 7.20591 21 7.67675 21 8.22675V10.2267L22.375 15.7267C22.5916 16.3601 22.4958 16.9351 22.0875 17.4517C21.6791 17.9684 21.1333 18.2267 20.45 18.2267ZM19 10.2267H4.99998V8.22675H19V10.2267ZM5.99998 16.2267H3.54998L4.54998 12.2267H19.45L20.45 16.2267H18V14.2267C18 13.9434 17.9041 13.7059 17.7125 13.5142C17.5208 13.3226 17.2833 13.2267 17 13.2267C16.7166 13.2267 16.4791 13.3226 16.2875 13.5142C16.0958 13.7059 16 13.9434 16 14.2267V16.2267H13V14.2267C13 13.9434 12.9041 13.7059 12.7125 13.5142C12.5208 13.3226 12.2833 13.2267 12 13.2267C11.7166 13.2267 11.4791 13.3226 11.2875 13.5142C11.0958 13.7059 11 13.9434 11 14.2267V16.2267H7.99998V14.2267C7.99998 13.9434 7.90415 13.7059 7.71248 13.5142C7.52082 13.3226 7.28332 13.2267 6.99998 13.2267C6.71665 13.2267 6.47915 13.3226 6.28748 13.5142C6.09582 13.7059 5.99998 13.9434 5.99998 14.2267V16.2267Z"
+                            fill="#404040"></path>
+                    </g>
+                </svg>
+                <h3 class="text-2xl font-black text-neutral-800">
+                    Product polishing
+                </h3>
+                <p>
+                    You’ve worked hard to build your product, but it’s lacking a
+                    certain level of polish—I’ll buff it up.
+                </p>
+            </li>
+            <li class="flex flex-col gap-4">
+                <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <mask
+                        id="mask0_45_20240"
+                        style="mask-type:alpha"
+                        maskUnits="userSpaceOnUse"
+                        x="0"
+                        y="0"
+                        width="24"
+                        height="24"
+                    >
+                        <rect width="24" height="24" fill="#D9D9D9"></rect>
+                    </mask>
+                    <g mask="url(#mask0_45_20240)">
+                        <path
+                            d="M8.8 10.95L10.95 8.775L9.55 7.35L8.45 8.45L7.05 7.05L8.125 5.95L7 4.825L4.825 7L8.8 10.95ZM17 19.175L19.175 17L18.05 15.875L16.95 16.95L15.55 15.55L16.625 14.45L15.2 13.05L13.05 15.2L17 19.175ZM7.25 21H3V16.75L7.375 12.375L2 7L7 2L12.4 7.4L16.175 3.6C16.375 3.4 16.6 3.25 16.85 3.15C17.1 3.05 17.3583 3 17.625 3C17.8917 3 18.15 3.05 18.4 3.15C18.65 3.25 18.875 3.4 19.075 3.6L20.4 4.95C20.6 5.15 20.75 5.375 20.85 5.625C20.95 5.875 21 6.13333 21 6.4C21 6.66667 20.95 6.92083 20.85 7.1625C20.75 7.40417 20.6 7.625 20.4 7.825L16.625 11.625L22 17L17 22L11.625 16.625L7.25 21ZM5 19H6.4L16.2 9.225L14.775 7.8L5 17.6V19Z"
+                            fill="#1C1B1F"></path>
+                    </g>
+                </svg>
+                <h3 class="text-2xl font-black text-neutral-800">
+                    Full product design
+                </h3>
+                <p>
+                    You’re looking to quickly and reliably get a set of
+                    high-fidelity mockups and prototypes. Look no further.
+                </p>
+            </li>
+            <li class="flex flex-col gap-4">
+                <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <mask
+                        id="mask0_45_20366"
+                        style="mask-type:alpha"
+                        maskUnits="userSpaceOnUse"
+                        x="0"
+                        y="0"
+                        width="24"
+                        height="24"
+                    >
+                        <rect width="24" height="24" fill="#D9D9D9"></rect>
+                    </mask>
+                    <g mask="url(#mask0_45_20366)">
+                        <path
+                            d="M19 21C18.35 21 17.7667 20.8125 17.25 20.4375C16.7333 20.0625 16.375 19.5833 16.175 19H11C9.9 19 8.95833 18.6083 8.175 17.825C7.39167 17.0417 7 16.1 7 15C7 13.9 7.39167 12.9583 8.175 12.175C8.95833 11.3917 9.9 11 11 11H13C13.55 11 14.0208 10.8042 14.4125 10.4125C14.8042 10.0208 15 9.55 15 9C15 8.45 14.8042 7.97917 14.4125 7.5875C14.0208 7.19583 13.55 7 13 7H7.825C7.60833 7.58333 7.24583 8.0625 6.7375 8.4375C6.22917 8.8125 5.65 9 5 9C4.16667 9 3.45833 8.70833 2.875 8.125C2.29167 7.54167 2 6.83333 2 6C2 5.16667 2.29167 4.45833 2.875 3.875C3.45833 3.29167 4.16667 3 5 3C5.65 3 6.22917 3.1875 6.7375 3.5625C7.24583 3.9375 7.60833 4.41667 7.825 5H13C14.1 5 15.0417 5.39167 15.825 6.175C16.6083 6.95833 17 7.9 17 9C17 10.1 16.6083 11.0417 15.825 11.825C15.0417 12.6083 14.1 13 13 13H11C10.45 13 9.97917 13.1958 9.5875 13.5875C9.19583 13.9792 9 14.45 9 15C9 15.55 9.19583 16.0208 9.5875 16.4125C9.97917 16.8042 10.45 17 11 17H16.175C16.3917 16.4167 16.7542 15.9375 17.2625 15.5625C17.7708 15.1875 18.35 15 19 15C19.8333 15 20.5417 15.2917 21.125 15.875C21.7083 16.4583 22 17.1667 22 18C22 18.8333 21.7083 19.5417 21.125 20.125C20.5417 20.7083 19.8333 21 19 21ZM5 7C5.28333 7 5.52083 6.90417 5.7125 6.7125C5.90417 6.52083 6 6.28333 6 6C6 5.71667 5.90417 5.47917 5.7125 5.2875C5.52083 5.09583 5.28333 5 5 5C4.71667 5 4.47917 5.09583 4.2875 5.2875C4.09583 5.47917 4 5.71667 4 6C4 6.28333 4.09583 6.52083 4.2875 6.7125C4.47917 6.90417 4.71667 7 5 7Z"
+                            fill="#1C1B1F"></path>
+                    </g>
+                </svg>
+                <h3 class="text-2xl font-black text-neutral-800">
+                    Post-MVP improvement
+                </h3>
+                <p>
+                    You’ve launched your MVP, and now it’s time to start
+                    iterating and improving. I’ll study your users and
+                    iteratively improve your product in high-impact ways.
+                </p>
+            </li>
+            <li class="flex flex-col gap-4">
+                <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <mask
+                        id="mask0_45_20302"
+                        style="mask-type:alpha"
+                        maskUnits="userSpaceOnUse"
+                        x="0"
+                        y="0"
+                        width="24"
+                        height="24"
+                    >
+                        <rect width="24" height="24" fill="#D9D9D9"></rect>
+                    </mask>
+                    <g mask="url(#mask0_45_20302)">
+                        <path
+                            d="M12 22C11.5667 22 11.175 21.8958 10.825 21.6875C10.475 21.4792 10.2 21.2 10 20.85C9.45 20.85 8.97917 20.6542 8.5875 20.2625C8.19583 19.8708 8 19.4 8 18.85V15.3C7.01667 14.65 6.22917 13.7917 5.6375 12.725C5.04583 11.6583 4.75 10.5 4.75 9.25C4.75 7.23333 5.45417 5.52083 6.8625 4.1125C8.27083 2.70417 9.98333 2 12 2C14.0167 2 15.7292 2.70417 17.1375 4.1125C18.5458 5.52083 19.25 7.23333 19.25 9.25C19.25 10.5333 18.9542 11.7 18.3625 12.75C17.7708 13.8 16.9833 14.65 16 15.3V18.85C16 19.4 15.8042 19.8708 15.4125 20.2625C15.0208 20.6542 14.55 20.85 14 20.85C13.8 21.2 13.525 21.4792 13.175 21.6875C12.825 21.8958 12.4333 22 12 22ZM10 18.85H14V17.95H10V18.85ZM10 16.95H14V16H10V16.95ZM9.8 14H11.25V11.3L9.05 9.1L10.1 8.05L12 9.95L13.9 8.05L14.95 9.1L12.75 11.3V14H14.2C15.1 13.5667 15.8333 12.9292 16.4 12.0875C16.9667 11.2458 17.25 10.3 17.25 9.25C17.25 7.78333 16.7417 6.54167 15.725 5.525C14.7083 4.50833 13.4667 4 12 4C10.5333 4 9.29167 4.50833 8.275 5.525C7.25833 6.54167 6.75 7.78333 6.75 9.25C6.75 10.3 7.03333 11.2458 7.6 12.0875C8.16667 12.9292 8.9 13.5667 9.8 14Z"
+                            fill="#1C1B1F"></path>
+                    </g>
+                </svg>
+
+                <h3 class="text-2xl font-black text-neutral-800">
+                    Design feedback
+                </h3>
+                <p>
+                    You’re already somewhere through the design process and want
+                    some feedback to gain clarity and confidence.
+                </p>
+            </li>
+        </ul>
+        <h2 class="text-4xl font-bold text-neutral-900">Toolbox</h2>
+        <div class="flex flex-col gap-10">
+            <p>
+                I’m a full-stack developer which gives me an edge when it comes
+                to designing products that are not just functional and
+                aesthetic, but also technically realistic.
+            </p>
+            <ul class="flex flex-col gap-4 w-full">
+                <li
+                    class="flex items-center gap-4 px-4 py-3 border border-neutral-300 bg-white border-dashed"
+                >
+                    <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <mask
+                            id="mask0_45_20322"
+                            style="mask-type:luminance"
+                            maskUnits="userSpaceOnUse"
+                            x="3"
+                            y="0"
+                            width="14"
+                            height="20"
+                        >
+                            <path
+                                d="M16.6666 0H3.33331V20H16.6666V0Z"
+                                fill="white"></path>
+                        </mask>
+                        <g mask="url(#mask0_45_20322)">
+                            <path
+                                d="M6.66664 20.0002C8.50664 20.0002 9.99999 18.5068 9.99999 16.6668V13.3335H6.66664C4.82665 13.3335 3.33331 14.8268 3.33331 16.6668C3.33331 18.5068 4.82665 20.0002 6.66664 20.0002Z"
+                                fill="#0ACF83"></path>
+                            <path
+                                d="M3.33331 9.99995C3.33331 8.15995 4.82665 6.66663 6.66664 6.66663H9.99999V13.3333H6.66664C4.82665 13.3333 3.33331 11.84 3.33331 9.99995Z"
+                                fill="#A259FF"></path>
+                            <path
+                                d="M3.33331 3.33332C3.33331 1.49333 4.82665 0 6.66664 0H9.99999V6.66668H6.66664C4.82665 6.66668 3.33331 5.17332 3.33331 3.33332Z"
+                                fill="#F24E1E"></path>
+                            <path
+                                d="M10 0H13.3333C15.1733 0 16.6667 1.49333 16.6667 3.33332C16.6667 5.17332 15.1733 6.66668 13.3333 6.66668H10V0Z"
+                                fill="#FF7262"></path>
+                            <path
+                                d="M16.6667 9.99995C16.6667 11.84 15.1733 13.3333 13.3333 13.3333C11.4933 13.3333 10 11.84 10 9.99995C10 8.15995 11.4933 6.66663 13.3333 6.66663C15.1733 6.66663 16.6667 8.15995 16.6667 9.99995Z"
+                                fill="#1ABCFE"></path>
+                        </g>
+                    </svg>
+
+                    <p>Figma</p>
+                </li>
+                <li
+                    class="flex items-center gap-4 px-4 py-3 border border-neutral-300 bg-white border-dashed"
+                >
+                    <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <mask
+                            id="mask0_45_20322"
+                            style="mask-type:luminance"
+                            maskUnits="userSpaceOnUse"
+                            x="3"
+                            y="0"
+                            width="14"
+                            height="20"
+                        >
+                            <path
+                                d="M16.6666 0H3.33331V20H16.6666V0Z"
+                                fill="white"></path>
+                        </mask>
+                        <g mask="url(#mask0_45_20322)">
+                            <path
+                                d="M6.66664 20.0002C8.50664 20.0002 9.99999 18.5068 9.99999 16.6668V13.3335H6.66664C4.82665 13.3335 3.33331 14.8268 3.33331 16.6668C3.33331 18.5068 4.82665 20.0002 6.66664 20.0002Z"
+                                fill="#0ACF83"></path>
+                            <path
+                                d="M3.33331 9.99995C3.33331 8.15995 4.82665 6.66663 6.66664 6.66663H9.99999V13.3333H6.66664C4.82665 13.3333 3.33331 11.84 3.33331 9.99995Z"
+                                fill="#A259FF"></path>
+                            <path
+                                d="M3.33331 3.33332C3.33331 1.49333 4.82665 0 6.66664 0H9.99999V6.66668H6.66664C4.82665 6.66668 3.33331 5.17332 3.33331 3.33332Z"
+                                fill="#F24E1E"></path>
+                            <path
+                                d="M10 0H13.3333C15.1733 0 16.6667 1.49333 16.6667 3.33332C16.6667 5.17332 15.1733 6.66668 13.3333 6.66668H10V0Z"
+                                fill="#FF7262"></path>
+                            <path
+                                d="M16.6667 9.99995C16.6667 11.84 15.1733 13.3333 13.3333 13.3333C11.4933 13.3333 10 11.84 10 9.99995C10 8.15995 11.4933 6.66663 13.3333 6.66663C15.1733 6.66663 16.6667 8.15995 16.6667 9.99995Z"
+                                fill="#1ABCFE"></path>
+                        </g>
+                    </svg>
+
+                    <p>Figma</p>
+                </li>
+                <li
+                    class="flex items-center gap-4 px-4 py-3 border border-neutral-300 bg-white border-dashed"
+                >
+                    <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <mask
+                            id="mask0_45_20322"
+                            style="mask-type:luminance"
+                            maskUnits="userSpaceOnUse"
+                            x="3"
+                            y="0"
+                            width="14"
+                            height="20"
+                        >
+                            <path
+                                d="M16.6666 0H3.33331V20H16.6666V0Z"
+                                fill="white"></path>
+                        </mask>
+                        <g mask="url(#mask0_45_20322)">
+                            <path
+                                d="M6.66664 20.0002C8.50664 20.0002 9.99999 18.5068 9.99999 16.6668V13.3335H6.66664C4.82665 13.3335 3.33331 14.8268 3.33331 16.6668C3.33331 18.5068 4.82665 20.0002 6.66664 20.0002Z"
+                                fill="#0ACF83"></path>
+                            <path
+                                d="M3.33331 9.99995C3.33331 8.15995 4.82665 6.66663 6.66664 6.66663H9.99999V13.3333H6.66664C4.82665 13.3333 3.33331 11.84 3.33331 9.99995Z"
+                                fill="#A259FF"></path>
+                            <path
+                                d="M3.33331 3.33332C3.33331 1.49333 4.82665 0 6.66664 0H9.99999V6.66668H6.66664C4.82665 6.66668 3.33331 5.17332 3.33331 3.33332Z"
+                                fill="#F24E1E"></path>
+                            <path
+                                d="M10 0H13.3333C15.1733 0 16.6667 1.49333 16.6667 3.33332C16.6667 5.17332 15.1733 6.66668 13.3333 6.66668H10V0Z"
+                                fill="#FF7262"></path>
+                            <path
+                                d="M16.6667 9.99995C16.6667 11.84 15.1733 13.3333 13.3333 13.3333C11.4933 13.3333 10 11.84 10 9.99995C10 8.15995 11.4933 6.66663 13.3333 6.66663C15.1733 6.66663 16.6667 8.15995 16.6667 9.99995Z"
+                                fill="#1ABCFE"></path>
+                        </g>
+                    </svg>
+
+                    <p>Figma</p>
+                </li>
+                <li
+                    class="flex items-center gap-4 px-4 py-3 border border-neutral-300 bg-white border-dashed"
+                >
+                    <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <mask
+                            id="mask0_45_20322"
+                            style="mask-type:luminance"
+                            maskUnits="userSpaceOnUse"
+                            x="3"
+                            y="0"
+                            width="14"
+                            height="20"
+                        >
+                            <path
+                                d="M16.6666 0H3.33331V20H16.6666V0Z"
+                                fill="white"></path>
+                        </mask>
+                        <g mask="url(#mask0_45_20322)">
+                            <path
+                                d="M6.66664 20.0002C8.50664 20.0002 9.99999 18.5068 9.99999 16.6668V13.3335H6.66664C4.82665 13.3335 3.33331 14.8268 3.33331 16.6668C3.33331 18.5068 4.82665 20.0002 6.66664 20.0002Z"
+                                fill="#0ACF83"></path>
+                            <path
+                                d="M3.33331 9.99995C3.33331 8.15995 4.82665 6.66663 6.66664 6.66663H9.99999V13.3333H6.66664C4.82665 13.3333 3.33331 11.84 3.33331 9.99995Z"
+                                fill="#A259FF"></path>
+                            <path
+                                d="M3.33331 3.33332C3.33331 1.49333 4.82665 0 6.66664 0H9.99999V6.66668H6.66664C4.82665 6.66668 3.33331 5.17332 3.33331 3.33332Z"
+                                fill="#F24E1E"></path>
+                            <path
+                                d="M10 0H13.3333C15.1733 0 16.6667 1.49333 16.6667 3.33332C16.6667 5.17332 15.1733 6.66668 13.3333 6.66668H10V0Z"
+                                fill="#FF7262"></path>
+                            <path
+                                d="M16.6667 9.99995C16.6667 11.84 15.1733 13.3333 13.3333 13.3333C11.4933 13.3333 10 11.84 10 9.99995C10 8.15995 11.4933 6.66663 13.3333 6.66663C15.1733 6.66663 16.6667 8.15995 16.6667 9.99995Z"
+                                fill="#1ABCFE"></path>
+                        </g>
+                    </svg>
+
+                    <p>Figma</p>
+                </li>
+                <li class="flex items-center justify-center gap-2">
+                    <span class="inline-block">
+                        <svg
+                            width="11"
+                            height="12"
+                            viewBox="0 0 11 12"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                d="M0.593695 8.23429C0.499945 6.53117 1.85932 5.48429 3.2812 4.95304C2.81245 4.51554 2.32807 3.90617 2.29682 3.2343C2.2187 1.56242 3.98432 0.640545 5.4062 0.56242C6.23432 0.515545 8.29682 0.65617 8.3437 1.70305C8.39057 2.62492 7.9687 3.93742 7.35932 3.96867C6.8437 3.99992 6.92182 1.93742 4.82807 2.2343C4.04682 2.34367 3.3437 2.89055 3.39057 3.74992C3.4062 4.12492 3.5937 4.43742 3.8437 4.70304C4.0937 4.57804 4.43745 4.51555 4.7812 4.51555C5.4062 4.51555 6.0312 4.73429 6.06245 5.21867C6.0937 5.81242 5.73432 6.03117 5.2812 6.03117C4.70307 6.03117 3.9687 5.67179 3.70307 5.37492C3.01557 5.82804 2.68745 6.48429 2.73432 7.32804C2.81245 9.01554 4.04682 10.2655 5.74995 10.2968C7.01557 10.3124 8.95307 9.76554 8.95307 7.95304C8.95307 7.12492 8.39057 6.95304 7.98432 6.87492C6.70307 7.26554 5.29682 7.90617 6.24995 9.06242L5.99995 9.34367C3.56245 6.62492 6.6562 5.59367 8.51557 4.81242C9.54682 4.39054 9.24995 3.24992 8.43745 3.26555L8.48432 2.8593C10.7031 2.62492 11.3749 5.60929 9.64057 6.43742C9.87495 6.79679 10.0468 7.35929 9.99995 8.01554C9.82807 10.453 7.12495 11.4062 5.31245 11.4999C3.31245 11.6093 0.76557 10.8437 0.593695 8.23429Z"
+                                fill="#525252"></path>
+                        </svg>
+                    </span>
+                    <p class="inline-block">various analytics tools</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div
+        class="flex flex-col gap-10 col-span-3 border border-neutral-300 bg-white border-dashed px-5 py-10"
+    >
+        <h2 class="text-4xl font-bold text-neutral-900 text-center">FAQ</h2>
+        <Accordion client:only="svelte" />
     </div>
 </Layout>

@@ -26,7 +26,7 @@ import "@fontsource-variable/plus-jakarta-sans";
     </head>
     <body class="bg-neutral-50">
         <div
-            class="hidden bg-white h-14 border-b border-dashed border-neutral-200"
+            class="hidden bg-white h-14 border-b border-dashed border-neutral-300"
         >
         </div>
         <main class="max-w-screen-2xl p-5 relative grid grid-cols-3 gap-20">
@@ -39,14 +39,77 @@ import "@fontsource-variable/plus-jakarta-sans";
             />
             <slot />
             <div
-                class="absolute -z-10 top-0 left-0 w-full px-5 h-screen border-dashed border-neutral-200 grid grid-cols-3"
+                class="fixed -z-10 top-0 left-0 w-full px-5 h-screen border-dashed border-neutral-300 grid grid-cols-3"
             >
-                <div class="grid-cols-1 border-x border-dashed h-full"></div>
-                <div class="grid-cols-1 border-r border-dashed h-full"></div>
-                <div class="grid-cols-1 border-r border-dashed h-full"></div>
+                <div
+                    class="grid-cols-1 border-x border-dashed border-neutral-300 h-full"
+                >
+                </div>
+                <div
+                    class="grid-cols-1 border-r border-dashed border-neutral-300 h-full"
+                >
+                </div>
+                <div
+                    class="grid-cols-1 border-r border-dashed border-neutral-300 h-full"
+                >
+                </div>
             </div>
         </main>
-        <div class="bg-white h-14 border-t border-dashed border-neutral-200">
+        <footer class="flex flex-col gap-10 col-span-3 py-20 items-center p-5">
+            <Image
+                src={brandmark}
+                alt="Brandmark"
+                width={118}
+                height={65}
+                class="col-span-3"
+            />
+            <a
+                href="https://twitter.com/thecoppinger"
+                target="_blank"
+                class="hover:rotate-180 transition-all ease-linear duration-500"
+            >
+                <svg
+                    width="33"
+                    height="27"
+                    viewBox="0 0 33 27"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <g clip-path="url(#clip0_45_20228)">
+                        <path
+                            d="M32.5 23.1663C31.3225 22.6391 30.0572 22.2828 28.7292 22.1225C30.0849 22.9429 31.1258 24.242 31.6159 25.7899C30.3272 25.0177 28.9173 24.4737 27.447 24.1813C26.2494 25.4695 24.5432 26.2747 22.6549 26.2747C19.0291 26.2747 16.0895 23.3066 16.0895 19.646C16.0895 19.1264 16.1476 18.6205 16.2595 18.1352C10.8032 18.4118 5.96575 21.0507 2.72762 25.0613C2.16262 24.0822 1.83888 22.9434 1.83888 21.7287C1.83888 19.4289 2.998 17.4 4.7595 16.2112C3.71694 16.2442 2.69731 16.5285 1.78575 17.0405C1.78538 17.0127 1.78537 16.9849 1.78537 16.957C1.78537 13.7453 4.04837 11.0661 7.05162 10.4571C6.08486 10.1916 5.07079 10.1528 4.08687 10.3435C4.92225 7.70996 7.34688 5.79355 10.2196 5.73991C7.97275 3.96208 5.14188 2.90228 2.06613 2.90228C1.53613 2.90228 1.01363 2.93371 0.5 2.99492C3.40538 1.1141 6.85625 0.0166862 10.5638 0.0166862C22.6396 0.0166862 29.243 10.1176 29.243 18.8772C29.243 19.1647 29.2368 19.4506 29.224 19.7348C30.5093 20.673 31.6186 21.835 32.5 23.1663Z"
+                            fill="#55ACEE"></path>
+                        <path
+                            d="M21.5 21C22.2293 20.3206 22.9784 19.6611 23.7131 18.9869C23.8482 18.8629 24.2485 18.5064 24.3935 18.3072C24.5378 18.1088 24.4074 18.2012 24.5 18"
+                            stroke="white"
+                            stroke-linecap="round"></path>
+                        <path
+                            d="M21.5 18C22.4265 18.7927 23.2374 19.7471 24.0767 20.6658C24.1643 20.7616 24.2744 20.8961 24.3885 20.9678C24.5054 21.0413 24.4414 20.9703 24.5 20.9389"
+                            stroke="white"
+                            stroke-linecap="round"></path>
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_45_20228">
+                            <rect
+                                width="32"
+                                height="26.3784"
+                                fill="white"
+                                transform="matrix(1 0 0 -1 0.5 26.3784)"></rect>
+                        </clipPath>
+                    </defs>
+                </svg>
+            </a>
+            <p class="text-center">
+                Made with love, <a
+                    href="https://twitch.tv/thecoppinger"
+                    target="_blank"
+                    class="underline underline-offset-4">live on Twitch</a
+                >, from Wellington, New Zealand
+            </p>
+        </footer>
+        <div
+            class="hidden bg-white h-14 border-t border-dashed border-neutral-300"
+        >
         </div>
     </body>
 </html>
