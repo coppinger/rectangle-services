@@ -1,51 +1,50 @@
 ---
 interface Props {
-	title: string;
+    title: string;
 }
 
+import "$lib/styles/app.css";
+
 const { title } = Astro.props;
+
+import { Image } from "astro:assets";
+
+import brandmark from "/src/images/brandmark.png";
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="Astro description" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
+    </head>
+    <body class="bg-neutral-50">
+        <div
+            class="hidden bg-white h-14 border-b border-dashed border-neutral-200"
+        >
+        </div>
+        <main class="max-w-screen-2xl p-5 relative grid grid-cols-3 gap-20">
+            <Image
+                src={brandmark}
+                alt="Brandmark"
+                width={118}
+                height={65}
+                class="col-span-3"
+            />
+            <slot />
+            <div
+                class="absolute -z-10 top-0 left-0 w-full px-5 h-screen border-dashed border-neutral-200 grid grid-cols-3"
+            >
+                <div class="grid-cols-1 border-x border-dashed h-full"></div>
+                <div class="grid-cols-1 border-r border-dashed h-full"></div>
+                <div class="grid-cols-1 border-r border-dashed h-full"></div>
+            </div>
+        </main>
+        <div class="bg-white h-14 border-t border-dashed border-neutral-200">
+        </div>
+    </body>
 </html>
-<style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-		background-size: 224px;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
-</style>

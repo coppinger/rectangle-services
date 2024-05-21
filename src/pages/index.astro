@@ -1,14 +1,90 @@
 ---
-import "$lib/styles/app.css";
 import { Button } from "$lib/components/ui/button";
+
+let { title } = Astro.props;
+
+import Layout from "$lib/layouts/Layout.astro";
+
+import ServiceGrid from "$lib/components/ServiceGrid.svelte";
+
+let tools = [
+    "Figma",
+    "Linear",
+    "Typescript",
+    "Swelte/SwelteKit",
+    "PostgreSQL",
+    "Supabase",
+    "React",
+    "Next.js",
+];
+
+let faqs = [
+    { question: "What is your design process?", answer: "..." },
+    { question: "How do you handle revisions and feedback?", answer: "..." },
+    { question: "Can you work with our existing dev team?", answer: "..." },
+    { question: "What are your rates and payment terms?", answer: "..." },
+    {
+        question: "What is your availability and turnaround time?",
+        answer: "...",
+    },
+    { question: "Is there on-going support after resolution?", answer: "..." },
+    { question: "Are your designs user-friendly & accessible?", answer: "..." },
+];
 ---
 
-<html lang="en">
-    <head>
-        <title>Astro</title>
-    </head>
-    <body>
-        <p class="text-red-300">Test</p>
-        <Button>Hello World</Button>
-    </body>
-</html>
+<Layout title="Welcome to Astro.">
+    <div class="flex flex-col gap-10 col-span-3">
+        <h1 class="text-5xl font-black">
+            Hi, my name is Charlie <span class="text-blue-300">&</span> I’m a Senior
+            Product Designer
+        </h1>
+        <p>
+            I work with independent developers, startup founders and established
+            SaaS companies to take their designs from a bottle neck to a force
+            multiplier
+        </p>
+        <div
+            class="border border-dashed border-neutral-200 bg-white grid grid-cols-3 py-1"
+        >
+            <div
+                class="flex items-center justify-center gap-3 px-4 cols-span-1"
+            >
+                <div
+                    class="rounded-[1px] border border-neutral-300 w-[20px] h-[12px]"
+                >
+                    <div
+                        class="border border-neutral-50 bg-red-400 w-full h-full rounded-[2px]"
+                    >
+                    </div>
+                </div>
+                <p>May</p>
+            </div>
+            <div
+                class="flex items-center justify-center gap-3 px-4 cols-span-1"
+            >
+                <div
+                    class="rounded-[1px] border border-neutral-300 w-[20px] h-[12px]"
+                >
+                    <div
+                        class="border border-neutral-50 bg-red-400 w-full h-full rounded-[2px]"
+                    >
+                    </div>
+                </div>
+                <p>June</p>
+            </div>
+            <div
+                class="flex items-center justify-center gap-3 px-4 cols-span-1"
+            >
+                <div
+                    class="rounded-[1px] border border-neutral-300 w-[20px] h-[12px]"
+                >
+                    <div
+                        class="border border-neutral-50 bg-red-400 w-full h-full rounded-[2px]"
+                    >
+                    </div>
+                </div>
+                <p>July</p>
+            </div>
+        </div>
+    </div>
+</Layout>
