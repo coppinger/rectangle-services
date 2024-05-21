@@ -3,6 +3,16 @@ import { Button } from "$lib/components/ui/button";
 
 import Accordion from "$lib/components/Accordion.svelte";
 
+import { Image } from "astro:assets";
+
+import binder_pos_logo from "src/images/logos/binder-pos-logo.png";
+import channelfireball_logo from "src/images/logos/channelfireball-logo.png";
+import contact_logo from "src/images/logos/contact-logo.png";
+import creativehq_logo from "src/images/logos/creativehq-logo.png";
+import gbpn_logo from "src/images/logos/gbpn-logo.png";
+import lightning_lab_logo from "src/images/logos/lightning-lab-logo.png";
+import shopify_logo from "src/images/logos/shopify-logo.png";
+
 let { title } = Astro.props;
 
 import Layout from "$lib/layouts/Layout.astro";
@@ -100,15 +110,129 @@ let faqs = [
             </div>
         </div>
     </div>
+
     <div
-        class="grid grid-cols-2 bg-neutral-50 border border-neutral-300 border-dashed col-span-3 gap-5 p-5"
+        class="col-span-3 px-5 border border-dashed border-neutral-300 bg-neutral-50"
     >
-        <p>logos</p>
+        <div class="marquee marquee--7">
+            <Image
+                src={shopify_logo}
+                alt="Brandmark"
+                width={120}
+                height={36}
+                class="marquee__item"
+            />
+            <Image
+                src={contact_logo}
+                alt="Brandmark"
+                width={120}
+                height={36}
+                class="marquee__item"
+            />
+            <Image
+                src={creativehq_logo}
+                alt="Brandmark"
+                width={120}
+                height={36}
+                class="marquee__item"
+            />
+            <Image
+                src={lightning_lab_logo}
+                alt="Brandmark"
+                width={120}
+                height={36}
+                class="marquee__item"
+            />
+            <Image
+                src={channelfireball_logo}
+                alt="Brandmark"
+                width={120}
+                height={36}
+                class="marquee__item"
+            />
+            <Image
+                src={gbpn_logo}
+                alt="Brandmark"
+                width={120}
+                height={36}
+                class="marquee__item"
+            />
+            <Image
+                src={binder_pos_logo}
+                alt="Brandmark"
+                width={120}
+                height={36}
+                class="marquee__item"
+            />
+        </div>
     </div>
     <div
-        class="grid grid-cols-2 bg-neutral-50 border border-neutral-300 border-dashed col-span-3 gap-5 p-5"
+        class="bg-neutral-50 border border-neutral-300 border-dashed col-span-3 gap-5 flex flex-col"
     >
-        <p>testimonial</p>
+        <div
+            class="bg-white border-b border-dashed border-neutral-300 px-5 py-10"
+        >
+            <div class="text-xl font-medium text-netural-900 text-center">
+                Charlie changed my life. My rectangles are great now.
+            </div>
+        </div>
+        <div class="flex gap-5 items-center place-self-center pb-5">
+            <p>Eric, Founder</p>
+            <svg
+                width="88"
+                height="30"
+                viewBox="0 0 88 30"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <g filter="url(#filter0_b_45_20180)">
+                    <g opacity="0.5">
+                        <path
+                            d="M7.07102 22.0711C3.16578 18.1658 3.16578 11.8342 7.07102 7.92896L14.142 15L7.07102 22.0711Z"
+                            fill="#2563EB"></path>
+                    </g>
+                    <g opacity="0.32">
+                        <path
+                            d="M7.07104 22.071L14.1421 15C18.0474 18.9052 18.0474 25.2369 14.1421 29.1421L7.07104 22.071Z"
+                            fill="#2563EB"></path>
+                    </g>
+                    <g opacity="0.32">
+                        <path
+                            d="M7.07104 7.92898L14.1421 0.85791C18.0474 4.76315 18.0474 11.0948 14.1421 15L7.07104 7.92898Z"
+                            fill="#2563EB"></path>
+                    </g>
+                    <path
+                        d="M36.4841 10.5C33.8041 10.5 32.4241 12.38 32.4241 15.24C32.4241 18.22 34.1041 19.7 36.4641 19.7C38.9041 19.7 39.9841 18.38 40.1241 16.84H36.2042V14H43.1642V22.5H40.3842L40.2042 21.16C39.4042 22.1 37.8042 22.72 36.0442 22.72C31.9042 22.72 29.0042 19.68 29.0042 15.14C29.0042 10.68 31.9842 7.46002 36.5642 7.46002C40.1042 7.46002 42.8242 9.54002 43.1642 12.74H39.7641C39.3841 11.18 38.0241 10.5 36.4841 10.5ZM45.8398 22.5V7.70002H51.9998C54.9798 7.70002 56.7798 9.26002 56.7798 11.8C56.7798 13.38 56.0597 14.54 54.7197 15.12C56.1797 15.6 56.9598 16.74 56.9598 18.42C56.9598 21.04 55.1998 22.5 51.9998 22.5H45.8398ZM51.6598 10.54H49.0798V13.76H51.6598C52.8198 13.76 53.4598 13.18 53.4598 12.12C53.4598 11.08 52.8398 10.54 51.6598 10.54ZM51.8198 16.48H49.0798V19.66H51.8198C53.0198 19.66 53.6398 19.12 53.6398 18.02C53.6398 17.02 52.9998 16.48 51.8198 16.48ZM65.1406 17.58H62.3806V22.5H59.1405V7.70002H65.1406C68.1606 7.70002 70.1806 9.68002 70.1806 12.64C70.1806 15.6 68.1606 17.58 65.1406 17.58ZM64.4206 10.58H62.3806V14.7H64.4206C65.9806 14.7 66.7605 14.02 66.7605 12.64C66.7605 11.26 65.9806 10.58 64.4206 10.58ZM75.4264 22.5H72.2265V7.70002H75.4264L81.6664 17.12V7.70002H84.8665V22.5H81.6664L75.4264 13.1V22.5Z"
+                        fill="#2563EB"></path>
+                </g>
+                <defs>
+                    <filter
+                        id="filter0_b_45_20180"
+                        x="-16"
+                        y="-16"
+                        width="120"
+                        height="62"
+                        filterUnits="userSpaceOnUse"
+                        color-interpolation-filters="sRGB"
+                    >
+                        <feFlood flood-opacity="0" result="BackgroundImageFix"
+                        ></feFlood>
+                        <feGaussianBlur in="BackgroundImageFix" stdDeviation="8"
+                        ></feGaussianBlur>
+                        <feComposite
+                            in2="SourceAlpha"
+                            operator="in"
+                            result="effect1_backgroundBlur_45_20180"
+                        ></feComposite>
+                        <feBlend
+                            mode="normal"
+                            in="SourceGraphic"
+                            in2="effect1_backgroundBlur_45_20180"
+                            result="shape"></feBlend>
+                    </filter>
+                </defs>
+            </svg>
+        </div>
     </div>
     <div class="flex flex-col gap-20 col-span-3">
         <h2 class="text-4xl font-bold text-neutral-900">Services</h2>
@@ -460,3 +584,138 @@ let faqs = [
         <Accordion client:only="svelte" />
     </div>
 </Layout>
+
+<style>
+    .marquee {
+        display: flex;
+        block-size: var(--marquee-item-height);
+        margin-block: var(--marquee-item-height);
+        position: relative;
+        overflow: hidden;
+        mask-image: linear-gradient(
+            to right,
+            hsl(0 0% 0% / 0),
+            hsl(0 0% 0% / 1) 20%,
+            hsl(0 0% 0% / 1) 80%,
+            hsl(0 0% 0% / 0)
+        );
+        grid-column: span 3 / span 3;
+    }
+
+    .marquee--7 {
+        --marquee-item-width: 120px;
+        --marquee-item-height: 36px;
+        --marquee-duration: 30s;
+        --marquee-items: 7;
+    }
+
+    .marquee--omega {
+        --marquee-max-width: min(600px, 90vw);
+        max-inline-size: var(--marquee-max-width);
+        margin-inline: auto;
+        mask-image: linear-gradient(
+            to right,
+            hsl(0 0% 0% / 0),
+            hsl(0 0% 0% / 1) 10%,
+            hsl(0 0% 0% / 1) 90%,
+            hsl(0 0% 0% / 0)
+        );
+    }
+
+    .marquee__item {
+        --marquee-item-offset: max(
+            calc(var(--marquee-item-width) * var(--marquee-items)),
+            calc(100% + var(--marquee-item-width))
+        );
+        --marquee-delay: calc(
+            var(--marquee-duration) / var(--marquee-items) *
+                (var(--marquee-items) - var(--marquee-item-index)) * -1
+        );
+        position: absolute;
+        inset-inline-start: var(--marquee-item-offset);
+        transform: translateX(-50%);
+        animation: go linear var(--marquee-duration) var(--marquee-delay, 0s)
+            infinite;
+    }
+
+    .marquee__item:nth-child(3n) {
+        border-top-right-radius: 1rem;
+    }
+
+    .marquee__item:nth-child(3n + 1) {
+        border-bottom-right-radius: 1rem;
+    }
+
+    .marquee__item:nth-child(3n + 2) {
+        border-bottom-left-radius: 1rem;
+    }
+
+    .marquee__item:nth-child(3n + 3) {
+        border-bottom-left-radius: 1rem;
+    }
+
+    .marquee__item:nth-child(3n + 4) {
+        border-bottom-left-radius: 1rem;
+    }
+
+    .marquee__item:nth-child(3n + 5) {
+        border-bottom-left-radius: 1rem;
+    }
+
+    .marquee__item:nth-child(3n + 6) {
+        border-bottom-left-radius: 1rem;
+    }
+
+    .marquee--7 .marquee__item:nth-of-type(1) {
+        --marquee-item-index: 1;
+    }
+
+    .marquee--7 .marquee__item:nth-of-type(2) {
+        --marquee-item-index: 2;
+    }
+
+    .marquee--7 .marquee__item:nth-of-type(3) {
+        --marquee-item-index: 3;
+    }
+
+    .marquee--7 .marquee__item:nth-of-type(4) {
+        --marquee-item-index: 4;
+    }
+
+    .marquee--7 .marquee__item:nth-of-type(5) {
+        --marquee-item-index: 5;
+    }
+
+    .marquee--7 .marquee__item:nth-of-type(6) {
+        --marquee-item-index: 6;
+    }
+
+    .marquee--7 .marquee__item:nth-of-type(7) {
+        --marquee-item-index: 7;
+    }
+
+    @keyframes go {
+        to {
+            inset-inline-start: calc(var(--marquee-item-width) * -1);
+        }
+    }
+
+    @media (prefers-reduced-motion) {
+        .marquee {
+            justify-content: space-evenly;
+            mask-image: unset;
+        }
+
+        .marquee__item {
+            position: unset;
+            inset-inline-start: unset;
+            transform: unset;
+        }
+
+        @keyframes go {
+            to {
+                inset-inline-start: unset;
+            }
+        }
+    }
+</style>
