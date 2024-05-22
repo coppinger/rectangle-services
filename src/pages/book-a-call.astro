@@ -1,8 +1,8 @@
 ---
 import { Image } from "astro:assets";
-import { Button } from "$lib/components/ui/button";
 let { title } = Astro.props;
 import Layout from "$lib/layouts/Layout.astro";
+import CopyEmail from "$lib/components/CopyEmail.svelte";
 ---
 
 <Layout title="Rectangle Services — Senior Product Design Services">
@@ -13,12 +13,14 @@ import Layout from "$lib/layouts/Layout.astro";
             chat.
         </p>
         <p>
-            I'm available for a full-time consultancy, or a part-time contract.
+            I'm available for a full-time consultancy, or part-time contracts.
+        </p>
+        <p>
             I'm also available for short-term projects, and I'm happy to work
             with you on a project that's already in the works.
         </p>
-        <p>Can't see a time that works, or pefer email?</p>
-        <Button variant="outline">Copy email 📋</Button>
+        <p>Can't see a time that works, or just pefer email?</p>
+        <CopyEmail client:only="svelte" />
     </div>
     <div
         class="col-span-3 md:col-span-5 md:col-start-4 w-full min-w-full md:grid-rows-2"
@@ -75,7 +77,7 @@ import Layout from "$lib/layouts/Layout.astro";
             Cal("ui", {
                 theme: "light",
                 styles: { branding: { brandColor: "#fafafa" } },
-                hideEventTypeDetails: true,
+                hideEventTypeDetails: false,
                 layout: "month_view",
             });
         </script>

@@ -132,7 +132,8 @@ let faqs = [
         <div
             class="hidden md:block md:col-span-1 md:col-start-6 md:row-start-4"
         >
-            <Button class="w-full">Book a call -&gt;</Button>
+            <Button href="/book-a-call" class="w-full">Book a call -&gt;</Button
+            >
         </div>
     </div>
 
@@ -741,6 +742,9 @@ let faqs = [
                     FAQ
                 </h2>
                 <Accordion client:only="svelte" />
+                <Button href="/book-a-call" class="hidden md:block w-fit"
+                    >Book a call -&gt;</Button
+                >
             </div>
         </div>
     </div>
