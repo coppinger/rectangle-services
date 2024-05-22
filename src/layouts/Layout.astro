@@ -7,11 +7,16 @@ import "$lib/styles/app.css";
 
 import PostHog from "../components/posthog.astro";
 
+import { SEOMetadata } from "astro-seo-metadata";
+
 const { title } = Astro.props;
 
 import { Image } from "astro:assets";
 
 import brandmark from "/src/images/brandmark.png";
+
+import meta_image from "/src/images/meta_image.jpg";
+import favicon from "/src/images/favicon.png";
 
 import "@fontsource-variable/plus-jakarta-sans";
 ---
@@ -20,11 +25,20 @@ import "@fontsource-variable/plus-jakarta-sans";
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta name="description" content="Astro description" />
         <meta name="viewport" content="width=device-width" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <meta name="generator" content={Astro.generator} />
-        <title>{title}</title>
+        <SEOMetadata
+            siteName={"Rectangle Services"}
+            title={"Rectangle Services — Senior Product Design Services"}
+            description={"Full-stack, senior product design services for independent developers, founders and SaaS companies."}
+            image={meta_image.src}
+            favicon={favicon.src}
+            author="Charlie Coppinger"
+            copyright="© 2023 Charlie Coppinger. All rights reserved."
+            astroSitemap={true}
+            canonicalUrl={Astro.url.toString()}
+            type={"website"}
+            astroGenerator={true}
+        />
         <PostHog />
     </head>
     <body class="bg-neutral-50">
