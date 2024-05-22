@@ -47,13 +47,11 @@ import "@fontsource-variable/plus-jakarta-sans";
         <main
             class="max-w-screen-xl p-5 md:py-20 relative grid grid-cols-3 md:grid-cols-8 gap-20 md:mx-auto md:w-full"
         >
-            <Image
-                src={brandmark}
-                alt="Brandmark"
-                width={118}
-                height={65}
-                class="col-span-3 md:col-span-8"
-            />
+            <div
+                class="col-span-3 md:col-span-8 grid md:grid-cols-8 grid-cols-3"
+            >
+                <Image src={brandmark} alt="Brandmark" class="col-span-1" />
+            </div>
             <slot />
             <div
                 class="max-w-screen-xl fixed -z-10 top-0 w-full px-5 h-screen border-dashed border-neutral-300 grid grid-cols-3 md:grid-cols-8 left-1/2 transform -translate-x-1/2"
@@ -92,17 +90,13 @@ import "@fontsource-variable/plus-jakarta-sans";
                 >
                 </div>
             </div>
+            <div class="col-span-3"></div>
         </main>
         <footer class="flex flex-col gap-10 col-span-3 py-20 items-center p-5">
-            <Image
-                src={brandmark}
-                alt="Brandmark"
-                width={118}
-                height={65}
-                class="col-span-3"
-            />
+            <Image src={brandmark} alt="Brandmark" class="col-span-3" />
             <a
-                href="https://twitter.com/thecoppinger"
+                href="https://twitter.com/thecopping
+				</div>er"
                 target="_blank"
                 class="hover:rotate-180 transition-all ease-linear duration-500"
             >

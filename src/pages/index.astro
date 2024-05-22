@@ -14,6 +14,10 @@ import gbpn_logo from "src/images/logos/gbpn-logo.png";
 import lightning_lab_logo from "src/images/logos/lightning-lab-logo.png";
 import shopify_logo from "src/images/logos/shopify-logo.png";
 
+import side_photo from "src/images/side-photo.png";
+
+import bg_mockups from "src/images/bg-mockups.png";
+
 let { title } = Astro.props;
 
 import Layout from "$lib/layouts/Layout.astro";
@@ -49,8 +53,17 @@ let faqs = [
     <div
         class="flex flex-col gap-10 col-span-3 md:col-span-8 md:grid md:grid-cols-8 md:gap-y-6 md:gap-x-0 md:auto-rows-min"
     >
+        <div
+            class="hidden md:block md:col-start-8 md:col-span-1 md:row-start-1 relative"
+        >
+            <Image
+                src={side_photo}
+                alt="Side photo of a desk"
+                class="w-full absolute top-0 left-0 object-cover max-h-[381.333px]"
+            />
+        </div>
         <div class="md:col-span-4 md:row-start-1">
-            <h1 class="text-5xl font-black inline-block">
+            <h1 class="text-5xl font-black inline-block mb-5">
                 Hi, my name is Charlie <span class="inline-block"
                     ><svg
                         width="31"
@@ -130,62 +143,63 @@ let faqs = [
             <Image
                 src={shopify_logo}
                 alt="Brandmark"
-                width={120}
-                height={36}
-                class="marquee__item"
+                width={240}
+                class="marquee__item w-[120px]"
             />
             <Image
                 src={contact_logo}
                 alt="Brandmark"
-                width={120}
-                height={36}
-                class="marquee__item"
+                width={240}
+                class="marquee__item w-[120px]"
             />
             <Image
                 src={creativehq_logo}
                 alt="Brandmark"
-                width={120}
-                height={36}
-                class="marquee__item"
+                width={240}
+                class="marquee__item w-[120px]"
             />
             <Image
                 src={lightning_lab_logo}
                 alt="Brandmark"
-                width={120}
-                height={36}
-                class="marquee__item"
+                width={240}
+                class="marquee__item w-[120px]"
             />
             <Image
                 src={channelfireball_logo}
                 alt="Brandmark"
-                width={120}
-                height={36}
-                class="marquee__item"
+                width={240}
+                class="marquee__item w-[120px]"
             />
             <Image
                 src={gbpn_logo}
                 alt="Brandmark"
-                width={120}
-                height={36}
-                class="marquee__item"
+                width={240}
+                class="marquee__item w-[120px]"
             />
             <Image
                 src={binder_pos_logo}
                 alt="Brandmark"
-                width={120}
-                height={36}
-                class="marquee__item"
+                width={240}
+                class="marquee__item w-[120px]"
             />
         </div>
     </div>
     <div
-        class="bg-neutral-50 border border-neutral-300 border-dashed col-span-3 md:col-span-8 gap-5 flex flex-col md:p-20 md:pb-10 md:gap-10"
+        class="bg-neutral-50 border border-neutral-300 border-dashed col-span-3 md:col-span-8 gap-5 flex flex-col md:p-20 md:pb-10 md:gap-10 relative overflow-hidden"
     >
         <div
-            class="bg-white border-b border-dashed border-neutral-300 px-5 py-10 md:p-20"
+            class="hidden md:block absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full"
+        >
+            <Image
+                src={bg_mockups}
+                alt="Example mockups of product design work"
+            />
+        </div>
+        <div
+            class="bg-white border-b md:border border-dashed border-neutral-300 px-5 py-10 md:p-20 w-fit mx-auto md:bg-[#fff0] md:bg-opacity-50 md:backdrop-blur-2xl"
         >
             <div
-                class="text-xl md:text-4xl md:font-bold font-medium text-netural-900 text-center"
+                class="text-xl md:text-4xl md:font-bold font-medium text-netural-900 text-center w-fit"
             >
                 Charlie changed my life.<br class="hidden md:block" />
                 My rectangles are great now.
