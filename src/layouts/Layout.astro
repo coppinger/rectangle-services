@@ -29,20 +29,34 @@ import "@fontsource-variable/plus-jakarta-sans";
     </head>
     <body class="bg-neutral-50">
         <div
-            class="hidden bg-white h-14 border-b border-dashed border-neutral-300"
+            class="hidden md:flex bg-white h-14 border-b border-dashed border-neutral-300"
         >
+            <!-- Top bar -->
+            <div
+                class="max-w-screen-xl w-full flex items-center justify-between mx-auto p-5"
+            >
+                <p>Rectangle Services</p>
+                <div class="flex items-center gap-10">
+                    <a href="#services">Services</a>
+                    <a href="#faq">FAQ</a>
+                    <!-- TODO: add a booking page link with an embeded cal.com widget -->
+                    <a href="/book-a-call">Book a call -&gt;</a>
+                </div>
+            </div>
         </div>
-        <main class="max-w-screen-2xl p-5 relative grid grid-cols-3 gap-20">
+        <main
+            class="max-w-screen-xl p-5 md:py-20 relative grid grid-cols-3 md:grid-cols-8 gap-20 md:mx-auto md:w-full"
+        >
             <Image
                 src={brandmark}
                 alt="Brandmark"
                 width={118}
                 height={65}
-                class="col-span-3"
+                class="col-span-3 md:col-span-8"
             />
             <slot />
             <div
-                class="fixed -z-10 top-0 left-0 w-full px-5 h-screen border-dashed border-neutral-300 grid grid-cols-3"
+                class="max-w-screen-xl fixed -z-10 top-0 w-full px-5 h-screen border-dashed border-neutral-300 grid grid-cols-3 md:grid-cols-8 left-1/2 transform -translate-x-1/2"
             >
                 <div
                     class="grid-cols-1 border-x border-dashed border-neutral-300 h-full"
@@ -54,6 +68,27 @@ import "@fontsource-variable/plus-jakarta-sans";
                 </div>
                 <div
                     class="grid-cols-1 border-r border-dashed border-neutral-300 h-full"
+                >
+                </div>
+                <!-- extra 5 columns bigger viewports -->
+                <div
+                    class="hidden md:block grid-cols-1 border-r border-dashed border-neutral-300 h-full"
+                >
+                </div>
+                <div
+                    class="hidden md:block grid-cols-1 border-r border-dashed border-neutral-300 h-full"
+                >
+                </div>
+                <div
+                    class="hidden md:block grid-cols-1 border-r border-dashed border-neutral-300 h-full"
+                >
+                </div>
+                <div
+                    class="hidden md:block grid-cols-1 border-r border-dashed border-neutral-300 h-full"
+                >
+                </div>
+                <div
+                    class="hidden md:block grid-cols-1 border-r border-dashed border-neutral-300 h-full"
                 >
                 </div>
             </div>

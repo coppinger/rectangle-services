@@ -86,6 +86,7 @@
     }
 }
 
-p {
+p,
+a {
     @apply font-apercu text-neutral-600;
 }
