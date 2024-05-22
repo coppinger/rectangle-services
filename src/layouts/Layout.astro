@@ -59,12 +59,17 @@ import "@fontsource-variable/plus-jakarta-sans";
             </div>
         </div>
         <main
-            class="max-w-screen-xl p-5 md:py-20 relative grid grid-cols-3 md:grid-cols-8 gap-20 md:gap-y-20 md:gap-x-0 md:mx-auto md:w-full relative"
+            class="max-w-screen-xl p-5 md:py-20 relative grid grid-cols-3 md:grid-cols-8 gap-20 md:gap-y-20 md:gap-x-0 md:mx-auto md:w-full"
         >
             <div
                 class="col-span-3 md:col-span-8 grid md:grid-cols-8 grid-cols-3"
             >
-                <Image src={brandmark} alt="Brandmark" class="col-span-1" />
+                <Image
+                    src={brandmark}
+                    alt="Brandmark"
+                    loading={"eager"}
+                    class="col-span-1"
+                />
             </div>
             <slot />
             <div
@@ -110,7 +115,13 @@ import "@fontsource-variable/plus-jakarta-sans";
             <a
                 href="https://twitter.com/thecoppinger"
                 target="_blank"
-                class="hover:rotate-180 transition-all ease-linear duration-150 delay-100"
+                aria-label="@TheCoppinger on Twitter
+                class="
+                hover:rotate-180
+                transition-all
+                ease-linear
+                duration-150
+                delay-100"
             >
                 <svg
                     width="33"
