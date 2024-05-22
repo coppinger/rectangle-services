@@ -51,6 +51,14 @@ let faqs = [
 
 <Layout title="Rectangle Services — Senior Product Design Services">
     <div
+        class="flex md:hidden fixed z-20 bottom-0 left-0 w-full border border-t border-neutral-300 border-dashed bg-neutral-50 bg-opacity-50 backdrop-blur-md p-4 gap-4"
+    >
+        <Button href="#services" class="w-full" variant="outline"
+            >Services</Button
+        >
+        <Button href="/book-a-call" class="w-full">Book a call -&gt;</Button>
+    </div>
+    <div
         class="flex flex-col gap-10 col-span-3 md:col-span-8 md:grid md:grid-cols-8 md:gap-y-6 md:gap-x-0 md:auto-rows-min"
     >
         <div
@@ -62,7 +70,7 @@ let faqs = [
                 class="w-full absolute top-0 left-0 object-cover max-h-[381.333px]"
             />
         </div>
-        <div class="md:col-span-4 md:row-start-1">
+        <div class="sm:col-span-2 md:col-span-4 md:row-start-1">
             <h1 class="text-5xl font-black inline-block mb-5">
                 Hi, my name is Charlie <span class="inline-block"
                     ><svg
@@ -269,6 +277,7 @@ let faqs = [
     <div class="flex flex-col gap-y-20 col-span-3 md:col-span-8">
         <div
             class="md:grid md:grid-cols-8 flex flex-col gap-10 md:gap-y-20 md:gap-x-0"
+            id="services"
         >
             <h2
                 class="text-4xl font-bold text-neutral-900 md:row-start-1 md:col-span-3 md:col-start-2"
@@ -734,7 +743,7 @@ let faqs = [
                 </ul>
             </div>
         </div>
-        <div class="grid grid-cols-3 md:grid-cols-8">
+        <div class="grid grid-cols-3 md:grid-cols-8" id="faq">
             <div
                 class="flex flex-col gap-10 col-span-3 items-center border border-neutral-300 bg-white border-dashed px-5 py-10 md:col-start-3 md:col-span-4"
             >
