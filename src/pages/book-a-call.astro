@@ -5,21 +5,10 @@ import Layout from "$lib/layouts/Layout.astro";
 import CopyEmail from "$lib/components/CopyEmail.svelte";
 ---
 
-<Layout title="Rectangle Services — Senior Product Design Services">
+<Layout title="Rectangle Services — Book A Call">
     <div class="col-span-3 md:col-span-2 flex flex-col gap-4">
         <h1 class="text-5xl font-black">Book a call</h1>
-        <p>
-            If you've got a project in mind, let's hop on a call and have a
-            chat.
-        </p>
-        <p>
-            I'm available for a full-time consultancy, or part-time contracts.
-        </p>
-        <p>
-            I'm also available for short-term projects, and I'm happy to work
-            with you on a project that's already in the works.
-        </p>
-        <p>Can't see a time that works, or just pefer email?</p>
+        <p>Can't see a time below that works, or prefer email?</p>
         <CopyEmail client:only="svelte" />
     </div>
     <div
