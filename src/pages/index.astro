@@ -3,6 +3,7 @@ import { Button } from "$lib/components/ui/button";
 
 import Accordion from "$lib/components/Accordion.svelte";
 import Tool from "$lib/components/Tool.svelte";
+import Month from "$lib/components/Month.svelte";
 
 import { Image } from "astro:assets";
 
@@ -96,48 +97,13 @@ let faqs = [
                 neck to a force multiplier
             </p>
         </div>
+    
         <div
             class="border border-dashed border-neutral-300 bg-white grid grid-cols-3 py-1 md:col-span-3 md:col-start-4 md:row-start-3 md:h-fit"
         >
-            <div
-                class="flex items-center justify-center gap-3 px-4 cols-span-1"
-            >
-                <div
-                    class="rounded-[1px] border border-neutral-300 w-[20px] h-[12px]"
-                >
-                    <div
-                        class="border border-neutral-50 bg-red-400 w-full h-full rounded-[2px]"
-                    >
-                    </div>
-                </div>
-                <p class="line-through">October</p>
-            </div>
-            <div
-                class="flex items-center justify-center gap-3 px-4 cols-span-1"
-            >
-                <div
-                    class="rounded-[1px] border border-neutral-300 w-[20px] h-[12px]"
-                >
-                    <div
-                        class="border border-neutral-50 bg-green-500 w-full h-full rounded-[2px]"
-                    >
-                    </div>
-                </div>
-                <p>November</p>
-            </div>
-            <div
-                class="flex items-center justify-center gap-3 px-4 cols-span-1"
-            >
-                <div
-                    class="rounded-[1px] border border-neutral-300 w-[20px] h-[12px]"
-                >
-                    <div
-                        class="border border-neutral-50 bg-green-500 w-full h-full rounded-[2px]"
-                    >
-                    </div>
-                </div>
-                <p>December</p>
-            </div>
+            <Month availability={false}>October</Month>
+            <Month availability={true}>November</Month>
+            <Month availability={true}>December</Month>
         </div>
         <div
             class="hidden md:block md:col-span-1 md:col-start-6 md:row-start-4"
