@@ -53,8 +53,8 @@
             >Can you work with our existing dev team?
         </Accordion.Trigger>
         <Accordion.Content
-            >Yes—I've worked as a Product Owner & Product Manager and am more
-            than happy to work with an existing dev team.</Accordion.Content
+            >Yes—I've worked as both a Product Owner & Product Manager and am
+            more than happy to work with your existing dev team.</Accordion.Content
         >
     </Accordion.Item>
     <Accordion.Item value="item-4">
