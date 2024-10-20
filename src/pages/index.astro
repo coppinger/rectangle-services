@@ -61,7 +61,7 @@ let faqs = [
         <Button href="/book-a-call" class="w-full">Book a call -&gt;</Button>
     </div>
     <div
-        class="flex flex-col gap-10 col-span-3 md:col-span-8 md:grid md:grid-cols-8 md:gap-y-6 md:gap-x-0 md:auto-rows-min"
+        class="flex flex-col gap-10 col-span-3 md:col-span-8 md:grid md:grid-cols-8 md:gap-y-6 md:gap-x-0 md:auto-rows-min md:pb-16"
     >
         <div
             class="hidden md:block md:col-start-7 md:col-span-2 md:row-start-1 relative"
@@ -70,7 +70,7 @@ let faqs = [
                 src={side_photo}
                 loading={"eager"}
                 alt="A black and white portait of me sat on a chair, looking to the right—there's a faint hint that I might be thinking about something profound, but unfortunately, I can assure you that I was not."
-                class="w-full absolute top-0 left-0 object-cover max-h-[381.333px]"
+                class="w-full absolute top-0 left-0 object-cover "
             />
         </div>
         <div class="sm:col-span-2 md:col-span-4 md:row-start-1">
@@ -99,9 +99,9 @@ let faqs = [
         <div
             class="border border-dashed border-neutral-300 bg-white grid grid-cols-3 py-1 md:col-span-3 md:col-start-3 md:row-start-3 md:h-fit"
         >
-            <Month availability={false}>October</Month>
-            <Month availability={true}>November</Month>
-            <Month availability={true}>December</Month>
+            <Month availability={false} month="October">October</Month>
+            <Month availability={true} month="November">November</Month>
+            <Month availability={true} month="December">December</Month>
         </div>
         <div
             class="hidden md:block md:col-span-1 md:col-start-5 md:row-start-4"
