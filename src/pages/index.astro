@@ -720,13 +720,19 @@ let faqs = [
             (el as HTMLElement).style.transform = "translateY(8px)";
         });
 
+        const keyframes = {
+            opacity: [0, 1],
+            filter: ["blur(4px)", "blur(0px)"],
+            transform: ["translateY(8px)", "translateY(0px)"],
+        } as Record<string, any>;
+
         // Animate stagger groups — children with [data-blur-fade] animate together
         document
             .querySelectorAll("[data-blur-fade-stagger]")
             .forEach((group) => {
-                const children = group.querySelectorAll(
-                    ":scope > [data-blur-fade]"
-                );
+                const children = Array.from(
+                    group.querySelectorAll(":scope > [data-blur-fade]")
+                ) as HTMLElement[];
                 if (children.length === 0) return;
 
                 children.forEach((child) =>
@@ -737,19 +743,12 @@ let faqs = [
                     group as Element,
                     () => {
                         animate(
-                            children as NodeListOf<HTMLElement>,
+                            children,
+                            keyframes,
                             {
-                                opacity: [0, 1],
-                                filter: ["blur(4px)", "blur(0px)"],
-                                transform: [
-                                    "translateY(8px)",
-                                    "translateY(0px)",
-                                ],
-                            },
-                            {
-                                delay: stagger(0.25, { start: 0.1 }),
+                                delay: stagger(0.25, { startDelay: 0.1 }),
                                 duration: 0.8,
-                                easing: [0.25, 1, 0.5, 1],
+                                ease: [0.25, 1, 0.5, 1],
                             }
                         );
                     },
@@ -768,17 +767,10 @@ let faqs = [
                     () => {
                         animate(
                             el as HTMLElement,
-                            {
-                                opacity: [0, 1],
-                                filter: ["blur(4px)", "blur(0px)"],
-                                transform: [
-                                    "translateY(8px)",
-                                    "translateY(0px)",
-                                ],
-                            },
+                            keyframes,
                             {
                                 duration: 0.8,
-                                easing: [0.25, 1, 0.5, 1],
+                                ease: [0.25, 1, 0.5, 1],
                             }
                         );
                     },
