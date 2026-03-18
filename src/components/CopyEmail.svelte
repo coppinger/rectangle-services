@@ -2,16 +2,16 @@
     import { copy } from "svelte-copy";
     import { Button } from "$lib/components/ui/button";
     import { cn } from "$lib/utils";
-    let copied = false;
+    let copied = $state(false);
 </script>
 
 <div class={cn(copied ? "h-fit flex flex-col gap-2" : "h-10")}>
     <button
         class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full transition ease-linear delay-100 duration-300 flex items-center gap-2 font-apercu"
         use:copy={"charles.coppinger@gmail.com"}
-        on:click={() => {
+        onclick={() => {
             copied = true;
-        }}>Copy email 📋</button
+        }}>Copy email &#x1F4CB;</button
     >
     <div
         class="w-full bg-green-200 h-10 px-4 py-2 transition-all ease-linear duration-200 flex flex-col gap-4"

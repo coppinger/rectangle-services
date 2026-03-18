@@ -1,6 +1,11 @@
 <script lang="ts">
-    export let availability: boolean;
-    export let month: string;
+    import type { Snippet } from "svelte";
+
+    let {
+        availability,
+        month,
+        children,
+    }: { availability: boolean; month: string; children?: Snippet } = $props();
 </script>
 
 <div
@@ -19,7 +24,7 @@
     </div>
     <p class={availability ? "" : "line-through"}>
         <span class="hidden lg:inline">
-            <slot />
+            {@render children?.()}
         </span>
         <span class="lg:hidden">{month.slice(0, 3)}</span>
     </p>

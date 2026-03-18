@@ -1,13 +1,11 @@
 <script lang="ts">
-    //@ts-nocheck
     import * as Accordion from "$lib/components/ui/accordion/index.js";
 </script>
 
-<Accordion.Root class="w-full max-w-md font-apercu">
+<Accordion.Root type="single" class="w-full max-w-md font-apercu">
     <Accordion.Item value="item-1">
         <Accordion.Trigger
-            is:inline
-            on:click={() => {
+            onclick={() => {
                 window.posthog.capture("faq-accordion-v1-item-1-clicked");
             }}>What is your design process?</Accordion.Trigger
         >
@@ -33,8 +31,7 @@
     </Accordion.Item>
     <Accordion.Item value="item-2">
         <Accordion.Trigger
-            is:inline
-            on:click={() => {
+            onclick={() => {
                 window.posthog.capture("faq-accordion-v1-item-2-clicked");
             }}>How do you handle revisions and feedback?</Accordion.Trigger
         >
@@ -46,8 +43,7 @@
     </Accordion.Item>
     <Accordion.Item value="item-3">
         <Accordion.Trigger
-            is:inline
-            on:click={() => {
+            onclick={() => {
                 window.posthog.capture("faq-accordion-v1-item-3-clicked");
             }}
             >Can you work with our existing dev team?
@@ -59,20 +55,18 @@
     </Accordion.Item>
     <Accordion.Item value="item-4">
         <Accordion.Trigger
-            is:inline
-            on:click={() => {
+            onclick={() => {
                 window.posthog.capture("faq-accordion-v1-item-4-clicked");
             }}>What are your rates and payment terms?</Accordion.Trigger
         >
         <Accordion.Content
             >My rates vary depending on the size, type, and duration of the
-            project. My standard consulting rate is $150 USD per hour.</Accordion.Content
+            project. My standard consulting rate is $250 USD per hour.</Accordion.Content
         >
     </Accordion.Item>
     <Accordion.Item value="item-5">
         <Accordion.Trigger
-            is:inline
-            on:click={() => {
+            onclick={() => {
                 window.posthog.capture("faq-accordion-v1-item-5-clicked");
             }}>What is your availability and turnaround time?</Accordion.Trigger
         >
@@ -84,8 +78,7 @@
     </Accordion.Item>
     <Accordion.Item value="item-6">
         <Accordion.Trigger
-            is:inline
-            on:click={() => {
+            onclick={() => {
                 window.posthog.capture("faq-accordion-v1-item-6-clicked");
             }}>Is there on-going support after completion?</Accordion.Trigger
         >
@@ -98,8 +91,7 @@
     </Accordion.Item>
     <Accordion.Item value="item-7">
         <Accordion.Trigger
-            is:inline
-            on:click={() => {
+            onclick={() => {
                 window.posthog.capture("faq-accordion-v1-item-7-clicked");
             }}>Are your designs user-friendly and accessible?</Accordion.Trigger
         >
@@ -110,8 +102,8 @@
             - Anna Cook
             <br /><br />
             I firmly believe that making designs accessible benefits everyone, including
-            the business. I endeavor to follow best practices to make my designs
-            as user-friendly and accessible as possible.</Accordion.Content
+            the business. I endeavor to follow best practices to make my designs as
+            user-friendly and accessible as possible.</Accordion.Content
         >
     </Accordion.Item>
 </Accordion.Root>
