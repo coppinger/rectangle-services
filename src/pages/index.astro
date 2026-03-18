@@ -1,6 +1,4 @@
 ---
-import { Button } from "$lib/components/ui/button";
-
 import Accordion from "$lib/components/Accordion.svelte";
 import Tool from "$lib/components/Tool.svelte";
 import Month from "$lib/components/Month.svelte";
@@ -13,6 +11,8 @@ import contact_logo from "src/images/logos/contact-logo.png";
 import creativehq_logo from "src/images/logos/creativehq-logo.png";
 import gbpn_logo from "src/images/logos/gbpn-logo.png";
 import lightning_lab_logo from "src/images/logos/lightning-lab-logo.png";
+import simon_sinek_logo from "src/images/logos/simon-sinek-logo.png";
+import flight_story_logo from "src/images/logos/flight-story-logo.png";
 import shopify_logo from "src/images/logos/shopify-logo.png";
 import steven_bartlett from "src/images/steven-bartlett.webp"
 
@@ -53,18 +53,18 @@ let faqs = [
 
 <Layout title="Rectangle Services — Product Design & Strategy Consultancy">
     <div
-        class="flex md:hidden fixed z-20 bottom-0 left-0 w-full border border-t border-neutral-300 border-dashed bg-neutral-50 bg-opacity-50 backdrop-blur-md p-4 gap-4"
+        class="flex md:hidden fixed z-20 bottom-0 left-0 w-full border border-t border-neutral-300 border-dashed bg-neutral-50/50 backdrop-blur-md p-4 gap-4"
     >
-        <Button href="#services" class="w-full" variant="outline"
-            >Services</Button
-        >
-        <Button href="/book-a-call" class="w-full">Book a call -&gt;</Button>
+        <a href="#services" class="w-full inline-flex items-center justify-center text-sm font-medium border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 font-apercu transition-colors">Services</a>
+        <a href="/book-a-call" class="w-full inline-flex items-center justify-center text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 font-apercu transition-colors">Book a call -&gt;</a>
     </div>
     <div
         class="flex flex-col gap-10 col-span-3 md:col-span-8 md:grid md:grid-cols-8 md:gap-y-6 md:gap-x-0 md:auto-rows-min md:pb-16"
+        data-blur-fade-stagger
     >
         <div
             class="hidden md:block md:col-start-7 md:col-span-2 md:row-start-1 relative"
+            data-blur-fade
         >
             <Image
                 src={side_photo}
@@ -73,7 +73,7 @@ let faqs = [
                 class="w-full absolute top-0 left-0 object-cover "
             />
         </div>
-        <div class="sm:col-span-2 md:col-span-4 md:row-start-1">
+        <div class="sm:col-span-2 md:col-span-4 md:row-start-1" data-blur-fade>
             <h1 class="text-5xl font-black inline-block mb-5">
                 Hi, my name is Charlie <span class="inline-block"
                     ><svg
@@ -90,7 +90,7 @@ let faqs = [
                 </span> I’m a Principal Product Designer
             </h1>
         </div>
-        <div class="md:col-span-3 md:col-start-3 md:row-start-2 md:h-fit">
+        <div class="md:col-span-3 md:col-start-3 md:row-start-2 md:h-fit" data-blur-fade>
             <p>
                 I work with industry leaders, startup founders, and established SaaS companies to transform their design from a bottleneck into a force multiplier.
             </p>
@@ -105,16 +105,16 @@ let faqs = [
         </div> -->
         <div
             class="hidden md:block md:col-span-1 md:col-start-5 md:row-start-4"
+            data-blur-fade
         >
-            <Button href="/book-a-call" class="w-full">Book a call -&gt;</Button
-            >
+            <a href="/book-a-call" class="w-full inline-flex items-center justify-center text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 font-apercu transition-colors">Book a call -&gt;</a>
         </div>
     </div>
 
     <div
         class="col-span-3 md:col-span-8 px-5 border border-dashed border-neutral-300 bg-neutral-50"
     >
-        <div class="marquee marquee--7">
+        <div class="marquee marquee--9">
             <Image
                 src={shopify_logo}
                 alt="Brandmark"
@@ -159,7 +159,21 @@ let faqs = [
             />
             <Image
                 src={binder_pos_logo}
-                alt="Brandmark"
+                alt="Binder POS"
+                loading={"eager"}
+                width={240}
+                class="marquee__item w-[120px]"
+            />
+            <Image
+                src={simon_sinek_logo}
+                alt="Simon Sinek's Optimism Company"
+                loading={"eager"}
+                width={240}
+                class="marquee__item w-[120px]"
+            />
+            <Image
+                src={flight_story_logo}
+                alt="Flight Story"
                 loading={"eager"}
                 width={240}
                 class="marquee__item w-[120px]"
@@ -168,6 +182,7 @@ let faqs = [
     </div>
     <div
         class="bg-neutral-50 border border-neutral-300 border-dashed col-span-3 md:col-span-8 gap-5 flex flex-col md:p-20 md:pb-10 md:gap-10 relative overflow-hidden"
+        data-blur-fade
     >
         <div
             class="hidden md:block absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full"
@@ -179,7 +194,7 @@ let faqs = [
             />
         </div>
         <div
-            class="bg-white border-b md:border border-dashed border-neutral-300 px-5 py-10 md:p-20 w-fit mx-auto md:bg-[#fff0] md:bg-opacity-50 md:backdrop-blur-lg"
+            class="bg-white border-b md:border border-dashed border-neutral-300 px-5 py-10 md:p-20 w-fit mx-auto md:bg-white/50 md:backdrop-blur-lg"
         >
             <div
                 class="text-base md:text-2xl font-semibold text-netural-900 text-center w-fit leading-relaxed md:leading-9"
@@ -213,13 +228,15 @@ let faqs = [
         >
             <h2
                 class="text-4xl font-bold text-neutral-900 md:row-start-1 md:col-span-3 md:col-start-2"
+                data-blur-fade
             >
                 Services
             </h2>
             <ul
                 class="flex flex-col gap-10 md:row-start-2 md:col-span-3 md:col-start-2"
+                data-blur-fade-stagger
             >
-                <li class="flex flex-col gap-4">
+                <li class="flex flex-col gap-4" data-blur-fade>
                     <svg
                         width="24"
                         height="24"
@@ -254,7 +271,7 @@ let faqs = [
                         lacking a certain level of polish—I’ll buff it up.
                     </p>
                 </li>
-                <li class="flex flex-col gap-4">
+                <li class="flex flex-col gap-4" data-blur-fade>
                     <svg
                         width="24"
                         height="24"
@@ -287,7 +304,7 @@ let faqs = [
                         high-fidelity mockups and prototypes. Look no further.
                     </p>
                 </li>
-                <li class="flex flex-col gap-4">
+                <li class="flex flex-col gap-4" data-blur-fade>
                     <svg
                         width="24"
                         height="24"
@@ -321,7 +338,7 @@ let faqs = [
                         iteratively improve your product in high-impact ways.
                     </p>
                 </li>
-                <li class="flex flex-col gap-4">
+                <li class="flex flex-col gap-4" data-blur-fade>
                     <svg
                         width="24"
                         height="24"
@@ -358,19 +375,21 @@ let faqs = [
             </ul>
             <h2
                 class="text-4xl font-bold text-neutral-900 md:row-start-1 md:col-span-2 md:col-start-6"
+                data-blur-fade
             >
                 Toolbox
             </h2>
             <div
                 class="flex flex-col gap-10 md:row-start-2 md:col-span-2 md:col-start-6"
+                data-blur-fade-stagger
             >
-                <p>
+                <p data-blur-fade>
                     As a full-stack developer, I have an edge when designing
                     products that are not just functional and aesthetic, but
                     also technically realistic.
                 </p>
-                <ul class="flex flex-col gap-4 w-full">
-                    <Tool title="Figma">
+                <ul class="flex flex-col gap-4 w-full" data-blur-fade-stagger>
+                    <Tool data-blur-fade title="Figma">
                         <svg
                             width="20"
                             height="20"
@@ -410,7 +429,7 @@ let faqs = [
                             </g>
                         </svg>
                     </Tool>
-                    <Tool title="Linear">
+                    <Tool data-blur-fade title="Linear">
                         <svg
                             width="20"
                             height="20"
@@ -433,7 +452,7 @@ let faqs = [
                             </defs>
                         </svg>
                     </Tool>
-                    <Tool title="Typescript">
+                    <Tool data-blur-fade title="Typescript">
                         <svg
                             width="20"
                             height="20"
@@ -457,7 +476,7 @@ let faqs = [
                             </defs>
                         </svg>
                     </Tool>
-                    <Tool title="Svelte/SvelteKit">
+                    <Tool data-blur-fade title="Svelte/SvelteKit">
                         <svg
                             width="20"
                             height="20"
@@ -473,7 +492,7 @@ let faqs = [
                                 fill="white"></path>
                         </svg>
                     </Tool>
-                    <Tool title="PostgreSQL"
+                    <Tool data-blur-fade title="PostgreSQL"
                         ><svg
                             width="20"
                             height="20"
@@ -507,7 +526,7 @@ let faqs = [
                             </defs>
                         </svg>
                     </Tool>
-                    <Tool title="Supabase"
+                    <Tool data-blur-fade title="Supabase"
                         ><svg
                             width="20"
                             height="20"
@@ -568,7 +587,7 @@ let faqs = [
                             </defs>
                         </svg>
                     </Tool>
-                    <Tool title="React"
+                    <Tool data-blur-fade title="React"
                         ><svg
                             width="20"
                             height="20"
@@ -581,7 +600,7 @@ let faqs = [
                                 fill="#00D8FF"></path>
                         </svg>
                     </Tool>
-                    <Tool title="NextJS"
+                    <Tool data-blur-fade title="NextJS"
                         ><svg
                             width="20"
                             height="20"
@@ -656,7 +675,7 @@ let faqs = [
                         </svg>
                     </Tool>
 
-                    <li class="flex items-center justify-center gap-2">
+                    <li class="flex items-center justify-center gap-2" data-blur-fade>
                         <span class="inline-block">
                             <svg
                                 width="11"
@@ -678,17 +697,95 @@ let faqs = [
         <div class="grid grid-cols-3 md:grid-cols-8" id="faq">
             <div
                 class="flex flex-col gap-10 col-span-3 items-center border border-neutral-300 bg-white border-dashed px-5 py-10 md:col-start-3 md:col-span-4"
+                data-blur-fade
             >
                 <h2 class="text-4xl font-bold text-neutral-900 text-center">
                     FAQ
                 </h2>
                 <Accordion client:only="svelte" />
-                <Button href="/book-a-call" class="hidden md:block w-fit"
-                    >Book a call -&gt;</Button
+                <a href="/book-a-call" class="hidden md:block w-fit inline-flex items-center justify-center text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 font-apercu transition-colors"
+                    >Book a call -&gt;</a
                 >
             </div>
         </div>
     </div>
+
+    <script>
+        import { animate, inView, stagger } from "motion";
+
+        // Set initial hidden state
+        document.querySelectorAll("[data-blur-fade]").forEach((el) => {
+            (el as HTMLElement).style.opacity = "0";
+            (el as HTMLElement).style.filter = "blur(4px)";
+            (el as HTMLElement).style.transform = "translateY(8px)";
+        });
+
+        // Animate stagger groups — children with [data-blur-fade] animate together
+        document
+            .querySelectorAll("[data-blur-fade-stagger]")
+            .forEach((group) => {
+                const children = group.querySelectorAll(
+                    ":scope > [data-blur-fade]"
+                );
+                if (children.length === 0) return;
+
+                children.forEach((child) =>
+                    child.setAttribute("data-blur-fade-handled", "")
+                );
+
+                inView(
+                    group as Element,
+                    () => {
+                        animate(
+                            children as NodeListOf<HTMLElement>,
+                            {
+                                opacity: [0, 1],
+                                filter: ["blur(4px)", "blur(0px)"],
+                                transform: [
+                                    "translateY(8px)",
+                                    "translateY(0px)",
+                                ],
+                            },
+                            {
+                                delay: stagger(0.25, { start: 0.1 }),
+                                duration: 0.8,
+                                easing: [0.25, 1, 0.5, 1],
+                            }
+                        );
+                    },
+                    { amount: 0.15 }
+                );
+            });
+
+        // Animate standalone elements (not handled by a stagger group)
+        document
+            .querySelectorAll(
+                "[data-blur-fade]:not([data-blur-fade-handled])"
+            )
+            .forEach((el) => {
+                inView(
+                    el as Element,
+                    () => {
+                        animate(
+                            el as HTMLElement,
+                            {
+                                opacity: [0, 1],
+                                filter: ["blur(4px)", "blur(0px)"],
+                                transform: [
+                                    "translateY(8px)",
+                                    "translateY(0px)",
+                                ],
+                            },
+                            {
+                                duration: 0.8,
+                                easing: [0.25, 1, 0.5, 1],
+                            }
+                        );
+                    },
+                    { amount: 0.2 }
+                );
+            });
+    </script>
 
     <style>
         .marquee {
@@ -707,11 +804,11 @@ let faqs = [
             grid-column: span 3 / span 3;
         }
 
-        .marquee--7 {
+        .marquee--9 {
             --marquee-item-width: 120px;
             --marquee-item-height: 36px;
-            --marquee-duration: 30s;
-            --marquee-items: 7;
+            --marquee-duration: 36s;
+            --marquee-items: 9;
         }
 
         .marquee--omega {
@@ -771,32 +868,40 @@ let faqs = [
             border-bottom-left-radius: 1rem;
         }
 
-        .marquee--7 .marquee__item:nth-of-type(1) {
+        .marquee--9 .marquee__item:nth-of-type(1) {
             --marquee-item-index: 1;
         }
 
-        .marquee--7 .marquee__item:nth-of-type(2) {
+        .marquee--9 .marquee__item:nth-of-type(2) {
             --marquee-item-index: 2;
         }
 
-        .marquee--7 .marquee__item:nth-of-type(3) {
+        .marquee--9 .marquee__item:nth-of-type(3) {
             --marquee-item-index: 3;
         }
 
-        .marquee--7 .marquee__item:nth-of-type(4) {
+        .marquee--9 .marquee__item:nth-of-type(4) {
             --marquee-item-index: 4;
         }
 
-        .marquee--7 .marquee__item:nth-of-type(5) {
+        .marquee--9 .marquee__item:nth-of-type(5) {
             --marquee-item-index: 5;
         }
 
-        .marquee--7 .marquee__item:nth-of-type(6) {
+        .marquee--9 .marquee__item:nth-of-type(6) {
             --marquee-item-index: 6;
         }
 
-        .marquee--7 .marquee__item:nth-of-type(7) {
+        .marquee--9 .marquee__item:nth-of-type(7) {
             --marquee-item-index: 7;
+        }
+
+        .marquee--9 .marquee__item:nth-of-type(8) {
+            --marquee-item-index: 8;
+        }
+
+        .marquee--9 .marquee__item:nth-of-type(9) {
+            --marquee-item-index: 9;
         }
 
         @keyframes go {
