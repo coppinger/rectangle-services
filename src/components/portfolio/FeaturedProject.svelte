@@ -1,6 +1,7 @@
 <script lang="ts">
     import type { FEATURED, VariantId } from "./data";
     import AiCommonsLogo from "./AiCommonsLogo.svelte";
+    import { blurFade } from "$lib/blur-fade";
 
     let { featured, variant }: { featured: typeof FEATURED; variant: VariantId } = $props();
 
@@ -9,11 +10,11 @@
 
 {#if variant === "a"}
     <!-- A: white dashed card, monogram tile, stacked content, full column height -->
-    <aside class="h-full flex flex-col gap-6 p-8 bg-white border border-dashed border-neutral-300">
+    <aside class="h-full flex flex-col gap-6 p-8 bg-white border border-dashed border-neutral-300" use:blurFade data-blur-fade>
         <div class="flex flex-col gap-4">
             <p class="font-apercu text-xs uppercase tracking-wider text-neutral-500">{featured.label}</p>
             <h3 class="text-neutral-900">
-                <a href={featured.url} target="_blank" rel="noopener" class="inline-block hover:opacity-70 transition-opacity">
+                <a href={featured.url} target="_blank" rel="noopener" data-track="featured-logo" data-track-name={featured.name} class="inline-block hover:opacity-70 transition-opacity">
                     <AiCommonsLogo class="h-9 w-auto" />
                 </a>
             </h3>
@@ -32,6 +33,8 @@
                     href={featured.url}
                     target="_blank"
                     rel="noopener"
+                    data-track="featured-cta"
+                    data-track-name={featured.name}
                     class="flex w-full items-center justify-center text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 font-apercu transition-colors"
                 >
                     View project -&gt;
@@ -47,12 +50,14 @@
     <!-- B: dark card with a faint dotted grid, inverted controls -->
     <aside
         class="relative h-full flex flex-col gap-6 p-8 bg-neutral-900 text-neutral-50 overflow-hidden"
+        use:blurFade
+        data-blur-fade
         style="background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px); background-size: 16px 16px;"
     >
         <div class="relative flex flex-col gap-4">
             <p class="font-apercu text-xs uppercase tracking-wider text-neutral-400">{featured.label}</p>
             <h3 class="text-neutral-50">
-                <a href={featured.url} target="_blank" rel="noopener" class="inline-block hover:opacity-70 transition-opacity">
+                <a href={featured.url} target="_blank" rel="noopener" data-track="featured-logo" data-track-name={featured.name} class="inline-block hover:opacity-70 transition-opacity">
                     <AiCommonsLogo class="h-9 w-auto" />
                 </a>
             </h3>
@@ -71,6 +76,8 @@
                     href={featured.url}
                     target="_blank"
                     rel="noopener"
+                    data-track="featured-cta"
+                    data-track-name={featured.name}
                     class="flex w-full items-center justify-center text-sm font-medium bg-white text-neutral-900 hover:bg-neutral-200 h-10 px-4 py-2 font-apercu transition-colors"
                 >
                     View project -&gt;
@@ -84,10 +91,10 @@
     </aside>
 {:else}
     <!-- C: no card, editorial left rule, oversized name, sticky on desktop -->
-    <aside class="md:sticky md:top-10 border-l-2 border-neutral-900 pl-6 flex flex-col gap-5">
+    <aside class="md:sticky md:top-10 border-l-2 border-neutral-900 pl-6 flex flex-col gap-5" use:blurFade data-blur-fade>
         <p class="font-apercu text-xs uppercase tracking-wider text-neutral-500">{featured.label}</p>
         <h3 class="text-neutral-900">
-            <a href={featured.url} target="_blank" rel="noopener" class="inline-block hover:opacity-70 transition-opacity">
+            <a href={featured.url} target="_blank" rel="noopener" data-track="featured-logo" data-track-name={featured.name} class="inline-block hover:opacity-70 transition-opacity">
                 <AiCommonsLogo class="h-12 w-auto" />
             </a>
         </h3>
@@ -107,6 +114,8 @@
                     href={featured.url}
                     target="_blank"
                     rel="noopener"
+                    data-track="featured-cta"
+                    data-track-name={featured.name}
                     class="flex w-full items-center justify-center text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 font-apercu transition-colors"
                 >
                     View project -&gt;

@@ -2,6 +2,9 @@
 
 export const PASSWORD = "rectangle";
 
+/** Linked from the icon under the page intro. */
+export const LINKEDIN_URL = "https://www.linkedin.com/in/charliecoppinger";
+
 export type Person = {
     /** matches the filename stem in src/images/portfolio/ (any extension) */
     slug: string;
@@ -45,13 +48,20 @@ export const FEATURED = {
     roles: ["Product strategy", "Brand", "Product design", "Development"],
 };
 
-export type Project = { name: string; url: string; domain: string };
+export type Project = {
+    name: string;
+    url: string;
+    domain: string;
+    /** Local logo path (in /public) used instead of logo.dev when that has no logo for the domain. */
+    logo?: string;
+};
 
 /** Other projects listed under the featured card. */
 export const PROJECTS: Project[] = [
     { name: "Mary & Pip", url: "https://www.maryandpip.com/", domain: "maryandpip.com" },
     { name: "Culture Test", url: "https://culturetest.com/", domain: "culturetest.com" },
     { name: "Leaderful", url: "https://simonsinek.com/leaderful", domain: "simonsinek.com" },
+    { name: "Flightcast", url: "https://flghtcast.com/", domain: "flghtcast.com", logo: "/logos/flightcast.svg" },
 ];
 
 export type Company = { name: string; domain: string };

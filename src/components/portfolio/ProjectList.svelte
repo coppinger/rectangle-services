@@ -1,23 +1,26 @@
 <script lang="ts">
     import { logoUrl, type Project } from "./data";
+    import { blurFade } from "$lib/blur-fade";
 
     let { projects }: { projects: Project[] } = $props();
 
     let failed = $state(new Set<string>());
 </script>
 
-<ul class="flex flex-col gap-3">
+<ul class="flex flex-col gap-3" use:blurFade data-blur-fade-stagger="0.1">
     {#each projects as project (project.url)}
-        <li>
+        <li data-blur-fade>
             <a
                 href={project.url}
                 target="_blank"
                 rel="noopener"
+                data-track="project"
+                data-track-name={project.name}
                 class="group flex items-center gap-3 h-12 px-4 bg-white border border-dashed border-neutral-300 hover:border-neutral-900 transition-colors"
             >
                 {#if !failed.has(project.domain)}
                     <img
-                        src={logoUrl(project.domain, { size: 64 })}
+                        src={project.logo ?? logoUrl(project.domain, { size: 64 })}
                         alt=""
                         width="20"
                         height="20"

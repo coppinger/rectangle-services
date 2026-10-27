@@ -1,6 +1,7 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import type { SectionKey, VariantId, VariantState } from "./data";
+    import { track } from "$lib/analytics";
 
     let {
         variants = $bindable(),
@@ -69,7 +70,9 @@
     }
 
     function pick(key: SectionKey, v: VariantId) {
+        if (variants[key] === v) return;
         variants = { ...variants, [key]: v };
+        track("portfolio_variant_changed", { section: key, variant: v });
     }
 </script>
 
