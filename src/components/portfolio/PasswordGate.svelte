@@ -1,5 +1,7 @@
 <script lang="ts">
-    import type { Snippet } from "svelte";
+    import { onMount, type Snippet } from "svelte";
+    import { blurFade } from "$lib/blur-fade";
+    import { track } from "$lib/analytics";
 
     let { password, children }: { password: string; children: Snippet } = $props();
 
@@ -15,31 +17,39 @@
         return candidate.trim().toLowerCase() === password.trim().toLowerCase();
     }
 
-    function unlock() {
+    function unlock(method: "password" | "link") {
         unlocked = true;
         try {
             sessionStorage.setItem(STORAGE_KEY, "1");
         } catch {}
+        track("portfolio_unlocked", { method });
     }
 
-    $effect(() => {
+    onMount(() => {
+        let status: "locked" | "unlocked_session" | "unlocked_link" = "locked";
+
         // Already unlocked this session?
         try {
             if (sessionStorage.getItem(STORAGE_KEY) === "1") {
                 unlocked = true;
-                return;
+                status = "unlocked_session";
             }
         } catch {}
 
         // One-click link: /portfolio?key=<password>
         const key = new URLSearchParams(window.location.search).get("key");
-        if (key !== null && matches(key)) {
-            unlock();
+        if (!unlocked && key !== null && matches(key)) {
+            unlock("link");
+            status = "unlocked_link";
+        }
+        if (key !== null) {
             // Drop the key from the address bar but keep any other params.
             const url = new URL(window.location.href);
             url.searchParams.delete("key");
             history.replaceState(history.state, "", url);
         }
+
+        track("portfolio_viewed", { status, via_link: key !== null });
     });
 
     $effect(() => {
@@ -49,8 +59,9 @@
     function submit(e: SubmitEvent) {
         e.preventDefault();
         if (matches(value)) {
-            unlock();
+            unlock("password");
         } else {
+            track("portfolio_unlock_failed");
             wrong = true;
             shakeCount += 1;
             value = "";
@@ -62,7 +73,7 @@
 {#if unlocked}
     {@render children()}
 {:else}
-    <div class="flex w-full justify-center py-10 md:py-20">
+    <div class="flex w-full justify-center py-10 md:py-20" use:blurFade data-blur-fade>
         <form
             onsubmit={submit}
             class="w-full max-w-sm bg-white border border-dashed border-neutral-300 p-6 md:p-8 flex flex-col gap-4"
@@ -81,7 +92,7 @@
                     aria-invalid={wrong}
                     aria-describedby={wrong ? "portfolio-password-error" : undefined}
                     oninput={() => (wrong = false)}
-                    class="h-10 w-full min-w-0 border border-neutral-300 bg-white px-3 text-sm text-neutral-900 placeholder:text-neutral-400 outline-hidden focus:border-neutral-900"
+                    class="h-10 w-full min-w-0 border border-neutral-300 bg-white px-3 text-base text-neutral-900 placeholder:text-neutral-400 outline-hidden focus:border-neutral-900"
                 />
                 <button
                     type="submit"

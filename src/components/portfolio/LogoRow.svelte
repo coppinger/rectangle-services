@@ -1,5 +1,6 @@
 <script lang="ts">
     import { logoUrl, type Company, type VariantId } from "./data";
+    import { blurFade } from "$lib/blur-fade";
 
     let {
         companies,
@@ -20,16 +21,17 @@
 
 {#if variant === "a"}
     <!-- A: label + single white strip of 5 equal cells, greyscale logos that colour on hover -->
-    <section class="flex flex-col gap-4">
+    <section class="flex flex-col gap-4" use:blurFade>
         {#if heading}
-            <h2 class="font-apercu text-xs uppercase tracking-wider text-neutral-500">{heading}</h2>
+            <h2 class="font-apercu text-xs uppercase tracking-wider text-neutral-500" data-blur-fade>{heading}</h2>
         {/if}
         <!-- Cells carry right+bottom dashed borders; the -mr/-mb offset hides the trailing ones under the wrapper edge. -->
         <div class="border border-dashed border-neutral-300 bg-white overflow-hidden">
-        <ul class="grid grid-cols-2 md:grid-cols-6 -mr-px -mb-px">
+        <ul class="grid grid-cols-2 md:grid-cols-6 -mr-px -mb-px" data-blur-fade-stagger="0.08">
             {#each companies as company (company.domain)}
                 <li
                     class="group flex flex-col items-center justify-center gap-3 px-4 py-8 border-r border-b border-dashed border-neutral-300"
+                    data-blur-fade
                 >
                     {#if failed.has(company.domain)}
                         <span class="flex size-10 md:size-12 items-center justify-center text-lg font-bold text-neutral-400">
@@ -54,13 +56,13 @@
     </section>
 {:else if variant === "b"}
     <!-- B: bold heading + wrapped row of chips (echoes Tool.svelte) -->
-    <section class="flex flex-col gap-5">
+    <section class="flex flex-col gap-5" use:blurFade>
         {#if heading}
-            <h2 class="text-2xl font-bold text-neutral-900">{heading}</h2>
+            <h2 class="text-2xl font-bold text-neutral-900" data-blur-fade>{heading}</h2>
         {/if}
-        <ul class="flex flex-wrap gap-3">
+        <ul class="flex flex-wrap gap-3" data-blur-fade-stagger="0.08">
             {#each companies as company (company.domain)}
-                <li class="inline-flex items-center gap-3 px-4 py-3 border border-dashed border-neutral-300 bg-white">
+                <li class="inline-flex items-center gap-3 px-4 py-3 border border-dashed border-neutral-300 bg-white" data-blur-fade>
                     {#if !failed.has(company.domain)}
                         <img
                             src={logoUrl(company.domain, { size: 48 })}
@@ -79,11 +81,11 @@
     </section>
 {:else}
     <!-- C: centred heading + marquee strip like the homepage, large greyscale logos -->
-    <section class="flex flex-col gap-6">
+    <section class="flex flex-col gap-6" use:blurFade>
         {#if heading}
-            <h2 class="text-center font-apercu text-xs uppercase tracking-wider text-neutral-500">{heading}</h2>
+            <h2 class="text-center font-apercu text-xs uppercase tracking-wider text-neutral-500" data-blur-fade>{heading}</h2>
         {/if}
-        <div class="marquee border border-dashed border-neutral-300 bg-neutral-50 px-5 py-8 overflow-hidden">
+        <div class="marquee border border-dashed border-neutral-300 bg-neutral-50 px-5 py-8 overflow-hidden" data-blur-fade>
             <!-- Spacing lives on each item (pr-16, no flex gap) so the duplicated half is exactly 50% of the track and the loop is seamless. -->
             <ul class="marquee__track flex w-max items-center" aria-label={heading || "Companies I work with"}>
                 {#each loop as company, i (`${company.domain}-${i}`)}

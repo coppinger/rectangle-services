@@ -1,5 +1,6 @@
 <script lang="ts">
     import type { Person, VariantId } from "./data";
+    import { blurFade } from "$lib/blur-fade";
 
     type PersonWithSrc = Person & { src: string | null };
 
@@ -68,9 +69,9 @@
 
 {#if variant === "a"}
     <!-- A: clean three-column grid. Quote sits only above its person; photos share a baseline. -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 items-end">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 items-end" use:blurFade data-blur-fade-stagger="0.15">
         {#each people as person, i (person.slug)}
-            <div class="flex flex-col gap-4 self-end">
+            <div class="flex flex-col gap-4 self-end" data-blur-fade>
                 {#if person.quote}
                     <div class="pb-2">
                         {@render quoteCard(person.quote)}
@@ -83,9 +84,9 @@
     </div>
 {:else if variant === "b"}
     <!-- B: full-width quote above, a dashed connector dropping into the quoted person's column, then a filmstrip. -->
-    <div class="flex flex-col">
+    <div class="flex flex-col" use:blurFade data-blur-fade-stagger>
         {#if quoted?.quote}
-            <figure class="bg-white border border-dashed border-neutral-300 p-6 md:p-10">
+            <figure class="bg-white border border-dashed border-neutral-300 p-6 md:p-10" data-blur-fade>
                 <blockquote class="text-lg md:text-2xl font-semibold text-neutral-900 leading-relaxed md:leading-9">
                     “{quoted.quote}”
                 </blockquote>
@@ -105,7 +106,7 @@
         {/if}
 
         <!-- Filmstrip: a single dashed frame wrapping all three, tight gaps. -->
-        <div class="bg-white border border-dashed border-neutral-300 p-3 md:p-4">
+        <div class="bg-white border border-dashed border-neutral-300 p-3 md:p-4" data-blur-fade>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
                 {#each people as person, i (person.slug)}
                     <div class="flex flex-col gap-3">
@@ -120,8 +121,8 @@
     </div>
 {:else}
     <!-- C: editorial. Quoted person is large with the quote overlaid; the others stack to the right. -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6">
-        <div class="md:col-span-2 flex flex-col gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6" use:blurFade data-blur-fade-stagger="0.15">
+        <div class="md:col-span-2 flex flex-col gap-4" data-blur-fade>
             {#if quoted?.quote}
                 <!-- Mobile: quote sits directly above the photo. -->
                 <div class="md:hidden pb-2">
@@ -145,7 +146,7 @@
             {@render caption(quoted)}
         </div>
 
-        <div class="flex flex-col gap-8 md:gap-6">
+        <div class="flex flex-col gap-8 md:gap-6" data-blur-fade>
             {#each others as person (person.slug)}
                 <div class="flex flex-col gap-3">
                     {@render tile(person, people.indexOf(person) === 0)}

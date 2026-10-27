@@ -1,7 +1,7 @@
 ---
 import Layout from "$lib/layouts/Layout.astro";
 import PortfolioApp from "$lib/components/portfolio/Portfolio.svelte";
-import { PEOPLE, FEATURED, COMPANIES, PASSWORD, PROJECTS } from "$lib/components/portfolio/data";
+import { PEOPLE, FEATURED, COMPANIES, PASSWORD, PROJECTS, LINKEDIN_URL, logoUrl } from "$lib/components/portfolio/data";
 import { getImage, Image } from "astro:assets";
 import footerPhoto from "/src/images/portfolio/footer-photo.png";
 
@@ -38,6 +38,22 @@ const people = await Promise.all(
         <p class="text-neutral-500">
             A short selection of people and companies I've worked with.
         </p>
+        <a
+            id="linkedin-link"
+            href={LINKEDIN_URL}
+            target="_blank"
+            rel="noopener"
+            aria-label="Charlie Coppinger on LinkedIn"
+            class="mt-1 inline-flex size-9 items-center justify-center self-start border border-dashed border-neutral-300 bg-white text-neutral-900 hover:border-neutral-900 transition-colors"
+        >
+            <img
+                src={logoUrl("linkedin.com", { size: 64 })}
+                alt=""
+                width="20"
+                height="20"
+                class="size-5 object-contain"
+            />
+        </a>
     </header>
     <div class="col-span-3 md:col-span-8 flex flex-col gap-10">
         <PortfolioApp
@@ -50,12 +66,20 @@ const people = await Promise.all(
         />
     </div>
     <div slot="footer" class="max-w-screen-xl mx-auto w-full px-5 md:px-0 pb-10 md:pb-20 grid grid-cols-3 md:grid-cols-8">
-        <Image
-            src={footerPhoto}
-            alt="Charlie leading a working session around a table with a client team"
-            loading="lazy"
-            width={1200}
-            class="col-span-3 md:col-span-4 md:col-start-3 w-full h-48 md:h-64 object-cover grayscale brightness-125 border border-dashed border-neutral-300"
-        />
+        <div class="col-span-3 md:col-span-4 md:col-start-3" data-blur-fade>
+            <Image
+                src={footerPhoto}
+                alt="Charlie leading a working session around a table with a client team"
+                loading="lazy"
+                width={1200}
+                class="w-full h-48 md:h-64 object-cover grayscale brightness-125 border border-dashed border-neutral-300"
+            />
+        </div>
     </div>
+    <script>
+        import { track } from "$lib/analytics";
+        document.getElementById("linkedin-link")?.addEventListener("click", () => {
+            track("portfolio_link_clicked", { label: "linkedin", name: "LinkedIn" });
+        });
+    </script>
 </Layout>

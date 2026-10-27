@@ -29,7 +29,7 @@ import "@fontsource-variable/plus-jakarta-sans";
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
         <SEOMetadata
             siteName={"Rectangle Services"}
             title={title}
@@ -183,5 +183,10 @@ import "@fontsource-variable/plus-jakarta-sans";
             class="hidden md:block bg-white h-14 border-t border-dashed border-neutral-300"
         >
         </div>
+        <script>
+            // Reveal everything tagged data-blur-fade / data-blur-fade-stagger (see src/blur-fade.ts).
+            import { initBlurFade } from "$lib/blur-fade";
+            initBlurFade(document);
+        </script>
     </body>
 </html>
