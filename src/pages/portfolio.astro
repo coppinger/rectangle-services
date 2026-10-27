@@ -1,0 +1,61 @@
+---
+import Layout from "$lib/layouts/Layout.astro";
+import PortfolioApp from "$lib/components/portfolio/Portfolio.svelte";
+import { PEOPLE, FEATURED, COMPANIES, PASSWORD, PROJECTS } from "$lib/components/portfolio/data";
+import { getImage, Image } from "astro:assets";
+import footerPhoto from "/src/images/portfolio/footer-photo.png";
+
+const files = import.meta.glob<{ default: ImageMetadata }>(
+    "/src/images/portfolio/*.{png,jpg,jpeg,webp,avif}",
+    { eager: true },
+);
+
+const byStem = new Map<string, ImageMetadata>();
+for (const [path, mod] of Object.entries(files)) {
+    const stem = path.split("/").pop()!.replace(/\.[^.]+$/, "");
+    byStem.set(stem, mod.default);
+}
+
+const people = await Promise.all(
+    PEOPLE.map(async (person) => {
+        const image = byStem.get(person.slug);
+        if (!image) return { ...person, src: null };
+        const optimised = await getImage({ src: image, width: 600, height: 600, format: "webp" });
+        return { ...person, src: optimised.src };
+    }),
+);
+---
+
+<Layout title="Portfolio — Charlie Coppinger" noindex brandmarkEnd>
+    <header slot="header" class="col-span-3 md:col-span-5 md:col-start-1 md:row-start-1 flex flex-col gap-3 justify-center">
+        <div class="flex items-center gap-4">
+            <h1 class="text-4xl font-bold text-neutral-900">Portfolio</h1>
+            <span
+                class="font-apercu text-xs uppercase tracking-widest text-neutral-900 border border-dashed border-neutral-900 px-2 py-1 leading-none"
+                >Confidential</span
+            >
+        </div>
+        <p class="text-neutral-500">
+            A short selection of people and companies I've worked with.
+        </p>
+    </header>
+    <div class="col-span-3 md:col-span-8 flex flex-col gap-10">
+        <PortfolioApp
+            client:load
+            people={people}
+            featured={FEATURED}
+            companies={COMPANIES}
+            projects={PROJECTS}
+            password={PASSWORD}
+        />
+    </div>
+    <div slot="footer" class="max-w-screen-xl mx-auto w-full px-5 md:px-0 pb-10 md:pb-20 grid grid-cols-3 md:grid-cols-8">
+        <Image
+            src={footerPhoto}
+            alt="Charlie leading a working session around a table with a client team"
+            loading="lazy"
+            width={1200}
+            class="col-span-3 md:col-span-4 md:col-start-3 w-full h-48 md:h-64 object-cover grayscale brightness-125 border border-dashed border-neutral-300"
+        />
+    </div>
+</Layout>

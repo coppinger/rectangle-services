@@ -1,6 +1,10 @@
 ---
 interface Props {
     title: string;
+    /** Adds <meta name="robots" content="noindex, nofollow"> */
+    noindex?: boolean;
+    /** push the brandmark to the last grid column (page header text goes in the "header" slot on the left) */
+    brandmarkEnd?: boolean;
 }
 
 import "$lib/styles/app.css";
@@ -9,7 +13,7 @@ import PostHog from "../components/posthog.astro";
 
 import { SEOMetadata } from "astro-seo-metadata";
 
-const { title } = Astro.props;
+const { title, noindex = false, brandmarkEnd = false } = Astro.props;
 
 import { Image } from "astro:assets";
 
@@ -39,6 +43,7 @@ import "@fontsource-variable/plus-jakarta-sans";
             type={"website"}
             astroGenerator={true}
         />
+        {noindex && <meta name="robots" content="noindex, nofollow" />}
         <PostHog />
     </head>
     <body class="bg-neutral-50">
@@ -67,7 +72,13 @@ import "@fontsource-variable/plus-jakarta-sans";
                 class="col-span-3 md:col-span-8 grid md:grid-cols-8 grid-cols-3"
                 data-blur-fade
             >
-                <a href="/">
+                <a
+                    href="/"
+                    class:list={[
+                        "col-span-1",
+                        brandmarkEnd && "md:col-start-8 md:row-start-1 md:justify-self-end",
+                    ]}
+                >
                     <Image
                         src={brandmark}
                         alt="Brandmark"
@@ -75,6 +86,7 @@ import "@fontsource-variable/plus-jakarta-sans";
                         class="col-span-1"
                     /></a
                 >
+                <slot name="header" />
             </div>
             <slot />
             <div
@@ -166,6 +178,7 @@ import "@fontsource-variable/plus-jakarta-sans";
                 >, from Wellington, New Zealand
             </p>
         </footer>
+        <slot name="footer" />
         <div
             class="hidden md:block bg-white h-14 border-t border-dashed border-neutral-300"
         >
