@@ -1,57 +1,52 @@
-<script is:inline>
-    !(function (t, e) {
-        var o, n, p, r;
-        e.__SV ||
-            ((window.posthog = e),
-            (e._i = []),
-            (e.init = function (i, s, a) {
-                function g(t, e) {
-                    var o = e.split(".");
-                    2 == o.length && ((t = t[o[0]]), (e = o[1])),
-                        (t[e] = function () {
-                            t.push(
-                                [e].concat(
-                                    Array.prototype.slice.call(arguments, 0)
-                                )
-                            );
-                        });
-                }
-                ((p = t.createElement("script")).type = "text/javascript"),
-                    (p.async = !0),
-                    (p.src = s.api_host + "/static/array.js"),
-                    (r =
-                        t.getElementsByTagName(
-                            "script"
-                        )[0]).parentNode.insertBefore(p, r);
-                var u = e;
-                for (
-                    void 0 !== a ? (u = e[a] = []) : (a = "posthog"),
-                        u.people = u.people || [],
-                        u.toString = function (t) {
-                            var e = "posthog";
-                            return (
-                                "posthog" !== a && (e += "." + a),
-                                t || (e += " (stub)"),
-                                e
-                            );
-                        },
-                        u.people.toString = function () {
-                            return u.toString(1) + ".people (stub)";
-                        },
-                        o =
-                            "capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys onSessionId".split(
-                                " "
-                            ),
-                        n = 0;
-                    n < o.length;
-                    n++
-                )
-                    g(u, o[n]);
-                e._i.push([i, s, a]);
-            }),
-            (e.__SV = 1));
-    })(document, window.posthog || []);
-    posthog.init("phc_BnhEmWJixetivX3t7ccZaNWopin3w8ezGCtDcxC2yK4J", {
-        api_host: "https://us.i.posthog.com",
+---
+/**
+ * PostHog loader. Every capture call in the app goes through `track()` in
+ * `src/analytics.ts`; this component only boots the SDK.
+ *
+ * All values passed via `define:vars` must be JSON-serialisable (strings and
+ * booleans here). `define:vars` makes the script inline automatically.
+ */
+
+// Fallback keeps production working if PUBLIC_POSTHOG_KEY is unset on the host.
+const key =
+    import.meta.env.PUBLIC_POSTHOG_KEY ??
+    "phc_BnhEmWJixetivX3t7ccZaNWopin3w8ezGCtDcxC2yK4J";
+
+const dev = import.meta.env.DEV;
+
+// In production `/ingest` is reverse-proxied to PostHog by `vercel.json`, so
+// first-party requests aren't dropped by ad blockers. Dev hits PostHog
+// directly because the Astro dev server has no such proxy.
+const apiHost =
+    import.meta.env.PUBLIC_POSTHOG_HOST ??
+    (dev ? "https://us.i.posthog.com" : "/ingest");
+---
+
+<script define:vars={{ key, dev, apiHost }}>
+    // Official snippet, copied verbatim from https://posthog.com/docs/libraries/js
+    // on 2026-10-28. Loads the SDK from the `-assets` host (or the same path
+    // under the reverse proxy) and queues calls until it arrives.
+    // prettier-ignore
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],Object.defineProperty(u,"toString",{configurable:!0,enumerable:!0,writable:!0,value:function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e}}),Object.defineProperty(u.people,"toString",{configurable:!0,enumerable:!0,writable:!0,value:function(){return u.toString(1)+".people (stub)"}}),o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagResult isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+
+    posthog.init(key, {
+        api_host: apiHost,
+        // Links back to the PostHog app must point at the real host, not the proxy.
+        ui_host: "https://us.posthog.com",
+        // Pin the SDK's behavioural defaults; bump deliberately after reading the changelog.
+        defaults: "2026-08-30",
+        // Strip the one-click portfolio password (`/portfolio?key=<password>`)
+        // from $current_url, $initial_current_url, referrers and replay URLs.
+        mask_personal_data_properties: true,
+        custom_personal_data_properties: ["key"],
+        // In dev, log what would be sent and drop it so local sessions never
+        // pollute the production project. In production, pass events through.
+        before_send: (event) => {
+            if (dev) {
+                console.debug("[posthog]", event?.event, event?.properties);
+                return null;
+            }
+            return event;
+        },
     });
 </script>
