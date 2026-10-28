@@ -2,6 +2,7 @@
     import { copy } from "svelte-copy";
     import { Button } from "$lib/components/ui/button";
     import { cn } from "$lib/utils";
+    import { track } from "$lib/analytics";
     let copied = $state(false);
 </script>
 
@@ -11,6 +12,7 @@
         use:copy={"charles.coppinger@gmail.com"}
         onclick={() => {
             copied = true;
+            track("email_copied");
         }}>Copy email &#x1F4CB;</button
     >
     <div
@@ -25,6 +27,7 @@
         class="w-full transition ease-linear delay-100 duration-300 flex items-center gap-2"
         href="https://icloud.com"
         target="_blank"
+        onclick={() => track("email_client_opened", { client: "icloud" })}
     >
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -44,6 +47,7 @@
         class="w-full transition ease-linear delay-300 duration-300 flex items-center gap-2"
         href="https://gmail.com"
         target="_blank"
+        onclick={() => track("email_client_opened", { client: "gmail" })}
         ><svg
             xmlns="http://www.w3.org/2000/svg"
             height="16"
@@ -84,6 +88,7 @@
         class="w-full transition ease-linear delay-500 duration-300 flex items-center gap-2"
         href="https://outlook.live.com"
         target="_blank"
+        onclick={() => track("email_client_opened", { client: "outlook" })}
         ><svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"

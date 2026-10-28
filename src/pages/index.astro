@@ -55,8 +55,8 @@ let faqs = [
     <div
         class="flex md:hidden fixed z-20 bottom-0 left-0 w-full border border-t border-neutral-300 border-dashed bg-neutral-50/50 backdrop-blur-md p-4 gap-4"
     >
-        <a href="#services" class="w-full inline-flex items-center justify-center text-sm font-medium border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 font-apercu transition-colors">Services</a>
-        <a href="/book-a-call" class="w-full inline-flex items-center justify-center text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 font-apercu transition-colors">Book a call -&gt;</a>
+        <a href="#services" data-cta="services" data-cta-location="mobile_bar" class="w-full inline-flex items-center justify-center text-sm font-medium border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 font-apercu transition-colors">Services</a>
+        <a href="/book-a-call" data-cta="book_a_call" data-cta-location="mobile_bar" class="w-full inline-flex items-center justify-center text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 font-apercu transition-colors">Book a call -&gt;</a>
     </div>
     <div
         class="flex flex-col gap-10 col-span-3 md:col-span-8 md:grid md:grid-cols-8 md:gap-y-6 md:gap-x-0 md:auto-rows-min md:pb-16"
@@ -107,7 +107,7 @@ let faqs = [
             class="hidden md:block md:col-span-1 md:col-start-5 md:row-start-4"
             data-blur-fade
         >
-            <a href="/book-a-call" class="w-full inline-flex items-center justify-center text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 font-apercu transition-colors">Book a call -&gt;</a>
+            <a href="/book-a-call" data-cta="book_a_call" data-cta-location="hero" class="w-full inline-flex items-center justify-center text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 font-apercu transition-colors">Book a call -&gt;</a>
         </div>
     </div>
 
@@ -703,7 +703,7 @@ let faqs = [
                     FAQ
                 </h2>
                 <Accordion client:only="svelte" />
-                <a href="/book-a-call" class="hidden md:block w-fit inline-flex items-center justify-center text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 font-apercu transition-colors"
+                <a href="/book-a-call" data-cta="book_a_call" data-cta-location="faq" class="hidden md:block w-fit inline-flex items-center justify-center text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 font-apercu transition-colors"
                     >Book a call -&gt;</a
                 >
             </div>

@@ -71,5 +71,44 @@ import CopyEmail from "$lib/components/CopyEmail.svelte";
             });
         </script>
         <!-- Cal inline embed code ends -->
+        <script>
+            // Conversion events from the Cal.com embed. This is a processed
+            // (module) script, so it runs after the inline loader above has
+            // defined `window.Cal`. Only non-PII fields are forwarded.
+            import { track } from "$lib/analytics";
+
+            type CalEvent<T> = { detail: { type: string; namespace: string; data: T } };
+            type BookingSuccessfulV2 = {
+                title?: string;
+                startTime?: string;
+                endTime?: string;
+                eventTypeId?: number | null;
+                status?: string;
+                isRecurring?: boolean;
+                paymentRequired?: boolean;
+            };
+
+            const Cal = (window as Window & { Cal?: (...args: unknown[]) => void }).Cal;
+            if (typeof Cal === "function") {
+                Cal("on", {
+                    action: "eventTypeSelected",
+                    callback: () => track("call_event_type_selected"),
+                });
+                Cal("on", {
+                    action: "bookingSuccessfulV2",
+                    callback: (e: CalEvent<BookingSuccessfulV2>) => {
+                        const d = e?.detail?.data ?? {};
+                        track("call_booked", {
+                            event_type_title: d.title ?? null,
+                            event_type_id: d.eventTypeId ?? null,
+                            start_time: d.startTime ?? null,
+                            end_time: d.endTime ?? null,
+                            status: d.status ?? null,
+                            is_recurring: d.isRecurring ?? false,
+                        });
+                    },
+                });
+            }
+        </script>
     </div>
 </Layout>

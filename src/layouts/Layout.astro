@@ -56,11 +56,14 @@ import "@fontsource-variable/plus-jakarta-sans";
             >
                 <a href="/">Rectangle Services</a>
                 <div class="flex items-center gap-10">
-                    <a class="underline" href="/#services">Services</a>
-                    <a class="underline" href="/#faq">FAQ</a>
+                    <a class="underline" href="/#services" data-cta="services" data-cta-location="nav">Services</a>
+                    <a class="underline" href="/#faq" data-cta="faq" data-cta-location="nav">FAQ</a>
                     <!-- TODO: add a booking page link with an embeded cal.com widget -->
-                    <a class="underline" href="/book-a-call"
-                        >Book a call -&gt;</a
+                    <a
+                        class="underline"
+                        href="/book-a-call"
+                        data-cta="book_a_call"
+                        data-cta-location="nav">Book a call -&gt;</a
                     >
                 </div>
             </div>
@@ -133,6 +136,8 @@ import "@fontsource-variable/plus-jakarta-sans";
                 href="https://twitter.com/thecoppinger"
                 target="_blank"
                 aria-label="@TheCoppinger on Twitter"
+                data-cta="twitter"
+                data-cta-location="footer"
                 class="hover:rotate-180
                 transition-all
                 ease-linear
@@ -174,6 +179,8 @@ import "@fontsource-variable/plus-jakarta-sans";
                 Made with love, <a
                     href="https://twitch.tv/thecoppinger"
                     target="_blank"
+                    data-cta="twitch"
+                    data-cta-location="footer"
                     class="underline underline-offset-4">live on Twitch</a
                 >, from Wellington, New Zealand
             </p>
@@ -186,7 +193,21 @@ import "@fontsource-variable/plus-jakarta-sans";
         <script>
             // Reveal everything tagged data-blur-fade / data-blur-fade-stagger (see src/blur-fade.ts).
             import { initBlurFade } from "$lib/blur-fade";
+            import { track } from "$lib/analytics";
             initBlurFade(document);
+
+            // One delegated listener for every CTA tagged with `data-cta`
+            // (and optionally `data-cta-location`). Note: `data-track` is a
+            // separate attribute owned by the portfolio's own click handler.
+            document.addEventListener("click", (e) => {
+                const el = (e.target as Element | null)?.closest<HTMLElement>("[data-cta]");
+                if (!el) return;
+                track("cta_clicked", {
+                    cta: el.dataset.cta,
+                    location: el.dataset.ctaLocation ?? null,
+                    href: el instanceof HTMLAnchorElement ? el.href : null,
+                });
+            });
         </script>
     </body>
 </html>
